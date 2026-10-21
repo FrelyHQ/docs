@@ -1,0 +1,7 @@
+# Frely docs
+
+> User documentation for Frely: accounts, billing, models, FrelyMCP, the Frely CLI, and creating on Frely.
+
+## Pages
+
+- [Devices and the Frely CLI](https://github.com/FrelyHQ/docs/blob/main/en/faq/devices.md): Install the Frely CLI, link a computer, keep it working, and remove it.
