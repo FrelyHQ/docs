@@ -11,6 +11,7 @@ This repository holds public user documentation only. Never add internal plans, 
 - Commands are complete. Use `<name>` for values the reader supplies and explain each one.
 - Mark values that come from the product with a fact marker so CI can verify them:
   `<!-- fact:plan.creator.monthlyUsd -->19<!-- /fact -->`
+- FAQ files (`en/faq/<topic>.md`, `order` in frontmatter): each question is a `##` heading, followed by `<!-- id: stable-anchor -->`, the answer paragraph, then optional lines `Related: [label](url) · [label](url)`, `Console: [label](url)` and ``API tools: `a`, `b` ``. Keep the id stable; it is the page anchor.
 - Link to other pages with relative paths (`./devices.md`). Link to the product with absolute `https://frely.cloud/...` URLs.
 - Avoid adverbs. Name actions, objects, conditions and results.
 

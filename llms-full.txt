@@ -2,6 +2,196 @@
 
 > User documentation for Frely: accounts, billing, models, FrelyMCP, the Frely CLI, and creating on Frely.
 
+## Account and sign-in
+
+Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/account.md
+
+# Account and sign-in
+
+## How do I get a Frely account?
+<!-- id: create-account -->
+
+Open the User Console and use the sign-in flow. New accounts use the registration or Team invitation entry the site offers. While sign-up is invite-only, request early access on the early-access page and Frely emails the invite.
+
+Related: [Request early access](https://frely.cloud/early-access/)
+
+## Is there an age requirement?
+<!-- id: age -->
+
+Yes. The Service is for people aged 18 or older. You must give accurate account information and keep control of your credentials, API keys, devices and sessions.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+## I cannot sign in. What should I do?
+<!-- id: cannot-sign-in -->
+
+Use the feedback on the sign-in page, the password-recovery flow, or your Team invitation. The Frely website never asks you to send a password by email. If none of these works, email support with your account email or username and when it happened (with your time zone).
+
+Related: [Contact support](https://frely.cloud/support/)
+
+Console: [Account security](https://frely.cloud/user/account/security)
+
+## I think my account or an API key was compromised.
+<!-- id: compromise -->
+
+Revoke the API key in the console and email support right away. You are responsible for activity done with your account or API credentials, so a suspected compromise must be reported.
+
+Related: [Contact support](https://frely.cloud/support/) · [Terms of Service](https://frely.cloud/terms/)
+
+Console: [Your API keys](https://frely.cloud/user/account/keys)
+
+API tools: `keys.list`, `keys.set_status`, `keys.revoke`
+
+## Can I close my account or delete my data?
+<!-- id: close-account -->
+
+Email support with your request. Frely may ask for information to verify it is you. Records Frely must keep for payment, accounting, security, fraud prevention, dispute, legal or audit reasons are not deleted on request.
+
+Related: [Contact support](https://frely.cloud/support/) · [Privacy Policy](https://frely.cloud/privacy/)
+
+## Billing, Credit and refunds
+
+Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/billing.md
+
+# Billing, Credit and refunds
+
+## What is Credit and what can I do with it?
+<!-- id: credit -->
+
+Credit is prepaid balance that pays for model usage on your own account. A top-up is a one-time charge. Credit cannot be withdrawn, cashed out, or transferred to another person or account.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+Console: [Your Credit](https://frely.cloud/user/account/credits)
+
+API tools: `credits.account`, `credit_products.list`, `credit_topups.list`
+
+## What do the Creator plans cost?
+<!-- id: plans -->
+
+Creator is $8 a month and includes $10 of model usage per billing period, up to 3 published services and 10 API keys. Creator Plus is $58 a month and includes $50 of usage, up to 100 published services and 100 API keys, with 10% off official models. The price at checkout is the one that applies.
+
+Related: [Pricing](https://frely.cloud/pricing/)
+
+Console: [Your plans](https://frely.cloud/user/account/plans)
+
+API tools: `creator.subscription`
+
+## Do I need a Creator plan to use existing models?
+<!-- id: need-plan -->
+
+No. A Creator plan is for creating and publishing your own models. Existing models are available under their own access conditions and usage rates.
+
+Related: [Pricing](https://frely.cloud/pricing/)
+
+## How does renewal work?
+<!-- id: renewal -->
+
+Creator and Creator Plus renew automatically each month. At checkout you authorize Frely, through Waffo Pancake, to charge the saved payment method at the start of each billing period at the price shown then, plus applicable taxes, until you cancel. If a plan starts with a trial, checkout shows when the first charge occurs.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+Console: [Your plans](https://frely.cloud/user/account/plans)
+
+API tools: `creator.subscription`
+
+## How do I cancel?
+<!-- id: cancel -->
+
+Cancel renewal at any time from your workspace. Future charges stop, and the plan stays available until the end of the period you already paid for. A period that has already been charged is not refunded unless the refund rules or applicable law say so.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+Console: [Your plans](https://frely.cloud/user/account/plans)
+
+API tools: `creator.subscription_cancel`
+
+## A renewal payment failed. What happens?
+<!-- id: failed-payment -->
+
+Frely can suspend or end the plan's entitlements when a renewal payment fails. Update the payment method and check your workspace; if it still fails, email support.
+
+Related: [Contact support](https://frely.cloud/support/)
+
+Console: [Your plans](https://frely.cloud/user/account/plans)
+
+API tools: `creator.subscription`, `creator.subscription_recover`
+
+## What if a plan price changes?
+<!-- id: price-change -->
+
+A new price applies from a later billing period and never changes a period already charged. If you do not want the new price, cancel renewal before the next period begins.
+
+## Can I get a refund?
+<!-- id: refund -->
+
+Refund eligibility is part of the product terms shown before purchase. Some products allow a refund for an unused grant before the refund deadline. Used credit, a used capability unit, a completed service result or a released entitlement is not refundable unless the product terms or the law require it. A duplicate charge, payment error, fulfillment error or Frely service failure can support a refund review. Email support with your account and the purchase. An approved refund goes through the payment provider.
+
+Related: [Contact support](https://frely.cloud/support/) · [Terms of Service](https://frely.cloud/terms/)
+
+Console: [Your orders](https://frely.cloud/user/account/orders)
+
+API tools: `service_orders.list`, `plan_purchases.get`, `credit_topups.get`
+
+## Who processes my payment?
+<!-- id: payment-processor -->
+
+Waffo Pancake is the Merchant of Record and payment processor for hosted checkout. It handles card and payment-method data. Frely receives transaction details and fulfillment status, and does not need your full card number.
+
+Related: [Privacy Policy](https://frely.cloud/privacy/)
+
+## Creating and selling on Frely
+
+Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/creating.md
+
+# Creating and selling on Frely
+
+## What can I publish?
+<!-- id: what-sell -->
+
+A Prompt, Skill, Agent or workflow that you have the right to publish. Define its task, inputs, outputs and limits. What you sell is access to the capability, and your core prompts, code and workflows are not handed to buyers.
+
+Related: [Pricing](https://frely.cloud/pricing/) · [Security and data](https://frely.cloud/security/)
+
+## What is the difference between a hosted Agent and a download-install item?
+<!-- id: hosted-vs-install -->
+
+A hosted Agent runs on Frely and buyers use it through Frely, so your private content stays with you. A download-install Prompt or Skill delivers its files to the buyer's own device; the free part is visible to everyone who installs it, and Frely cannot recall a copy already installed. Content that must stay private should be published as a hosted Agent on a paid Creator plan.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+API tools: `skills.list`, `agents.list`
+
+## How many services can I publish?
+<!-- id: plan-limits -->
+
+Creator allows up to 3 and Creator Plus up to 100.
+
+Related: [Pricing](https://frely.cloud/pricing/)
+
+API tools: `creator.subscription`
+
+## I have no publishing or product entry.
+<!-- id: cannot-publish -->
+
+Signing in alone does not grant publishing. Check that your plan is active and that you meet the publishing eligibility and commercial terms.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+## Is sales revenue the same as profit or a withdrawable balance?
+<!-- id: revenue -->
+
+No. Creators must account for model and service running costs, and revenue is not automatically profit or a balance you can withdraw. Settlement follows the service terms.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+## What rights do I need?
+<!-- id: rights -->
+
+You must hold the rights to distribute the files and content you publish and name the original source where needed. Content that infringes others' rights is not allowed.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
 ## Devices and the Frely CLI
 
 Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/devices.md
@@ -9,33 +199,378 @@ Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/devices.md
 # Devices and the Frely CLI
 
 ## How do I install the Frely CLI and link my computer?
+<!-- id: install -->
 
-Run the install script:
+Run the install script: curl -fsSL https://frely.cloud/install.sh | sh. It installs frely and runs frely mcp start, which opens the browser to sign in (new accounts can register on the same page), asks you to approve the device and prints your MCP URL. Run it again at any time to update.
+
+Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
+
+## My AI app shows no device.
+<!-- id: no-device -->
+
+Run frely mcp start on the computer, and make sure the CLI is signed in to the same Frely account as your AI app.
+
+Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
+
+## A device shows as offline.
+<!-- id: offline -->
+
+Turn the computer on, connect it to the internet and run frely mcp start again. frely doctor shows the account, installation, version, MCP and service state; add -v for details.
+
+Console: [My Devices](https://frely.cloud/user/device)
+
+## Device access expired.
+<!-- id: expired -->
+
+Device MCP access lasts 90 days by default. Run frely mcp start to approve again (frely mcp start --days with a number from 1 to 365 renews early). The MCP URL does not change. You can manage your computers under My Devices on the Frely website.
+
+Console: [My Devices](https://frely.cloud/user/device)
+
+## Why does the AI app ask for permission to read some folders?
+<!-- id: permissions -->
+
+Commands run in a sandbox that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch workspaces you registered. When a task needs more, the app must ask, you decide on the Frely site and how long it lasts, and you can revoke it later. The AI app cannot approve its own request.
+
+Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
+
+## How do I remove Frely from my computer?
+<!-- id: uninstall -->
+
+Run frely uninstall in a local terminal. It lists everything first, then removes it after you type yes. It revokes this computer's access, removes the service, saved login, device identity, settings and caches, and finally the frely program. It keeps your Providers and Agents in your account.
+
+## Privacy and your data
+
+Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/privacy-data.md
+
+# Privacy and your data
+
+## What does Frely store from my requests?
+<!-- id: what-stored -->
+
+Frely processes prompts, files, tool inputs and responses when the service you asked for needs them. When capture is enabled, Request Capture can store request and response content. The model provider you choose receives the request data it needs to answer.
+
+Related: [Privacy Policy](https://frely.cloud/privacy/)
+
+## How long is data kept?
+<!-- id: how-long -->
+
+Request history is kept in hot storage for 180 days. Request Capture content is kept in hot storage for four weeks. Account records remain while the account exists. Billing, purchase, refund and audit records can remain longer for accounting, fraud prevention and legal reasons, and a hot-storage window is not a promise of removal from every archive or backup.
+
+Related: [Privacy Policy](https://frely.cloud/privacy/)
+
+## Are my computer's files uploaded?
+<!-- id: device-files -->
+
+Device tool calls such as read, edit_file, process and web_fetch are relayed to your own computer. FrelyMCP keeps only the OAuth sign-in records for them. Calls to models and agents go through the Frely gateway.
+
+Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
+
+## How do I control analytics and the chat?
+<!-- id: analytics -->
+
+Analytics and the customer-service chat start only after you accept the analytics banner. Choose Analytics settings at the bottom of the page to reject or withdraw consent. Frely stops new Clarity collection when you withdraw, and advertising storage stays disabled.
+
+Related: [Privacy Policy](https://frely.cloud/privacy/)
+
+Console: [Analytics settings in your account](https://frely.cloud/user/account/general)
+
+## How do I report a security problem?
+<!-- id: security-report -->
+
+Follow the instructions on the Security and data page.
+
+Related: [Security and data](https://frely.cloud/security/)
+
+## Can I ask to see, correct or delete my personal data?
+<!-- id: rights-request -->
+
+Applicable law can give you rights to access, correct, delete, restrict or object to the use of your personal data, to receive a copy, and to withdraw consent. Email support; Frely may ask for information to verify the request.
+
+Related: [Contact support](https://frely.cloud/support/) · [Privacy Policy](https://frely.cloud/privacy/)
+
+## Using models and API keys
+
+Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/using-models.md
+
+# Using models and API keys
+
+## How do I create an API key?
+<!-- id: api-key -->
+
+Open the API key page in your console and create one. A key authorizes model calls, not management actions. Keep it in your client's protected configuration. Never put it in Git, screenshots or chat. Revoking a key stops later use.
+
+Related: [Guides](https://frely.cloud/docs/)
+
+Console: [Your API keys](https://frely.cloud/user/account/keys)
+
+API tools: `keys.list`, `keys.create`, `keys.set_limits`
+
+## What is the Frely API base URL?
+<!-- id: base-url -->
+
+https://api.frely.cloud. Always use https: requests over plain http are rejected, so a client configured with http://api.frely.cloud will fail. The same address serves every protocol, for example https://api.frely.cloud/v1/chat/completions, /v1/responses, /v1/messages, /v1/embeddings and the model list at /v1/models. Some clients want the base URL with /v1 on the end (https://api.frely.cloud/v1) and add the endpoint path themselves.
+
+Related: [Use Frely in Claude](https://frely.cloud/docs/claude/) · [Use Frely in ChatGPT](https://frely.cloud/docs/chatgpt/)
+
+Console: [API test (shows the base URL and a ready curl command)](https://frely.cloud/user/library/api-test)
+
+API tools: `models.available`
+
+## How do I authenticate API requests?
+<!-- id: authentication -->
+
+Send your API key as a bearer token: Authorization: Bearer <your key>. Add Content-Type: application/json to requests with a body. A request without a valid key gets a 401. A key authorizes model calls only, not account management.
+
+Console: [Your API keys](https://frely.cloud/user/account/keys)
+
+API tools: `keys.list`, `keys.create`
+
+## What does an error response look like?
+<!-- id: errors -->
+
+A JSON body of the form {"error":{"message","type","param","code"}}. The type follows the HTTP status: 401 authentication_error, 402 insufficient_quota, 403 permission_error, 404 not_found_error, 408 or 504 timeout_error, 429 rate_limit_error, other 4xx invalid_request_error, 503 service_unavailable_error, other 5xx server_error. Every response carries an x-request-id header; keep it when you contact support. A retryable failure may include a Retry-After header in seconds.
+
+Related: [Contact support](https://frely.cloud/support/)
+
+Console: [Request history](https://frely.cloud/user/usage/requests)
+
+API tools: `request_history.list`
+
+## What do I enter in my AI app or client?
+<!-- id: client-settings -->
+
+Three values: the public service address for the protocol you chose (not an internal address), your own API key, and a public model name that your account can see. Your account instructions show the exact values.
+
+Related: [Use Frely in Claude](https://frely.cloud/docs/claude/) · [Use Frely in ChatGPT](https://frely.cloud/docs/chatgpt/)
+
+API tools: `models.available`, `keys.list`
+
+## How do I add Frely to Claude or ChatGPT?
+<!-- id: connector -->
+
+Add Frely as a connector, use the FrelyMCP address as the MCP server URL, choose OAuth, sign in to Frely and approve access. The step-by-step guides show each screen.
+
+Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/) · [Use Frely in Claude](https://frely.cloud/docs/claude/) · [Use Frely in ChatGPT](https://frely.cloud/docs/chatgpt/)
+
+## A model shows in the list but I cannot call it.
+<!-- id: no-access -->
+
+Being listed is not permission to call. Check your plan, balance, allowance and the service terms, and ask an authorized administrator if you are on a Team. Rotating keys does not get around a restriction.
+
+API tools: `models.available`, `budget.get`, `credits.account`
+
+## My request failed or timed out.
+<!-- id: request-failed -->
+
+Keep a redacted note of the time, protocol, model name and request ID, and look at your request history. A timeout or dropped connection does not prove nothing was used, so check usage before retrying. Do not send credentials, request bodies or raw error dumps to anyone.
+
+Related: [Contact support](https://frely.cloud/support/)
+
+Console: [Request history](https://frely.cloud/user/usage/requests)
+
+API tools: `request_history.list`, `usage.summary`
+
+## Can I rely on model output?
+<!-- id: output-quality -->
+
+Model output can contain errors and Frely does not guarantee accuracy. Review it before using it in safety-critical, legal, financial, medical, security or production settings.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+## Use Frely in ChatGPT
+
+Source: https://github.com/FrelyHQ/docs/blob/main/en/guides/chatgpt.md
+
+# Use Frely in ChatGPT
+
+Connect once. ChatGPT signs in to Frely and can then list your models and call published models.
+
+## Before you start
+
+- A Frely account. Sign in at frely.cloud.
+- An enabled API key in your Frely workspace. Model calls are billed to your account through it.
+
+## Add Frely as a connector (recommended)
+
+1. In ChatGPT, open Settings and go to the section for apps and connectors. Create a new connector. Custom connectors can require developer mode, depending on your ChatGPT plan.
+2. Enter Frely as the name and paste this address as the MCP server URL:
+
+   ```sh
+   https://frely.cloud/mcp
+   ```
+   <!-- mock: connector -->
+3. Choose OAuth for authentication. Do not add an API key or an authorization header.
+4. Sign in to Frely in the window that opens and approve access.
+   <!-- mock: consent -->
+5. In a new chat, turn on the Frely connector and ask ChatGPT to use your model. For example: "Use my Frely model GPT-800 to review this text."
+   <!-- mock: chat -->
+
+## Paste the install prompt
+
+This route installs the Frely CLI, so ChatGPT needs to run commands on your computer.
+
+1. In your Frely workspace, open the model and choose Copy for ChatGPT. For a model someone shared with you, use the install link they sent.
+2. Paste it into ChatGPT. ChatGPT installs the Frely CLI, signs you in to Frely in your browser, and adds the model as a Skill.
+3. If ChatGPT asks you to reload the Skill, reload it. Then call the model by name.
+
+## Use the command line
+
+1. Install the Frely CLI:
+
+   ```sh
+   curl -fsSL https://frely.cloud/install.sh | sh
+   ```
+2. Sign in to Frely:
+
+   ```sh
+   frely login
+   ```
+3. Install the model as a ChatGPT Skill. Use the model link from its install instructions:
+
+   ```sh
+   frely agent install <model-link> --host chatgpt
+   ```
+
+## If something does not work
+
+| Problem | What to do |
+| --- | --- |
+| ChatGPT does not show the Frely tools | Turn on the Frely connector in the chat, or start a new chat after adding it. |
+| Sign-in fails or access is denied | Sign in with the same Frely account that owns the API key. Remove the connector and add it again to restart sign-in. |
+| A call reports that an API key is required | Create or enable an API key in your Frely workspace, then try again. |
+
+## Use Frely in Claude
+
+Source: https://github.com/FrelyHQ/docs/blob/main/en/guides/claude.md
+
+# Use Frely in Claude
+
+Connect once. Claude signs in to Frely and can then list your models and call published models.
+
+## Before you start
+
+- A Frely account. Sign in at frely.cloud.
+- An enabled API key in your Frely workspace. Model calls are billed to your account through it.
+
+## Claude app (web and desktop) (recommended)
+
+1. In Claude, open Settings, go to Connectors, and choose Add custom connector.
+2. Enter Frely as the name and paste this address as the URL:
+
+   ```sh
+   https://frely.cloud/mcp
+   ```
+   <!-- mock: connector -->
+3. Do not add authentication headers. Claude uses OAuth.
+4. Choose Connect, sign in to Frely, and approve access.
+   <!-- mock: consent -->
+5. In a chat, open the tools menu, turn on Frely, and ask Claude to use your model. For example: "Use my Frely model GPT-800 to review this text."
+   <!-- mock: chat -->
+
+## Claude Code
+
+1. Add Frely as an MCP server:
+
+   ```sh
+   claude mcp add --transport http frely https://frely.cloud/mcp
+   ```
+2. Run /mcp in Claude Code, choose frely, and sign in to Frely in your browser.
+
+   ```sh
+   /mcp
+   ```
+3. To add one model as a Skill instead, install the Frely CLI, run frely login, and install the model:
+
+   ```sh
+   frely agent install <model-link> --host claude-code
+   ```
+
+## If something does not work
+
+| Problem | What to do |
+| --- | --- |
+| Claude does not show the Frely tools | Turn on Frely in the chat tools menu, or start a new chat after connecting. |
+| Sign-in fails or access is denied | Sign in with the same Frely account that owns the API key. Remove the connector and add it again to restart sign-in. |
+| A call reports that an API key is required | Create or enable an API key in your Frely workspace, then try again. |
+
+## FrelyMCP
+
+Source: https://github.com/FrelyHQ/docs/blob/main/en/guides/frelymcp.md
+
+# FrelyMCP
+
+FrelyMCP is the MCP server for your Frely account. Connect it once and your AI app can reach your own computers, the cloud tools you turned on, and your models and AI agents. You sign in with OAuth; no API key is pasted into the app.
+
+## What it does
+
+Local: list the computers linked to your account, read files in a workspace, edit files, run commands and fetch web pages on them. Reading and writing local files is only one part of it. Cloud: use the cloud MCP servers you turned on for this connection, with no device needed. Models and agents: list the models and agents you can use, turn one on or off for MCP, and ask it from inside your AI app. You can connect your own agent, and it works like a model. Usage is billed to your Frely account.
+
+## Before you start
+
+You need a Frely account (sign in at frely.cloud). To use the device tools, install the Frely CLI on the computer and link it. Models, agents and cloud tools work without a device.
 
 ```sh
 curl -fsSL https://frely.cloud/install.sh | sh
+frely login
+frely mcp start
 ```
 
-The script installs `frely` and runs `frely mcp start`. That command opens the browser to sign in (new accounts can register on the same page), asks you to approve the device and prints your MCP URL. Run the script again at any time to update.
+## Connect your AI app
 
-See the [FrelyMCP guide](https://frely.cloud/docs/frelymcp/).
+Use this address as the MCP server URL and choose OAuth. Do not add authentication headers.
 
-## My AI app shows no device.
+```sh
+https://mcp.frely.cloud/mcp
+```
 
-Run `frely mcp start` on the computer. Make sure the CLI is signed in to the same Frely account as your AI app.
+## Claude
 
-## A device shows as offline.
+In Claude, open Settings, go to Connectors, choose Add custom connector, enter FrelyMCP as the name and paste the address above. Select Connect, sign in to Frely and approve access. For Claude Code run: claude mcp add --transport http frelymcp https://mcp.frely.cloud/mcp then /mcp to sign in.
 
-Turn the computer on, connect it to the internet and run `frely mcp start` again. `frely doctor` shows the account, installation, version, MCP and service state; add `-v` for details. Manage computers under [My Devices](https://frely.cloud/user/device).
+## ChatGPT
 
-## Device access expired.
+In ChatGPT, open Settings and go to the section for apps and connectors. Create a new connector, paste the address above, choose OAuth and sign in to Frely. Custom connectors can require developer mode, depending on your ChatGPT plan.
 
-Device MCP access lasts 90 days by default. Run `frely mcp start` to approve again; `frely mcp start --days <1-365>` renews early. The MCP URL does not change.
+## Install with a config file
 
-## Why does the AI app ask for permission to read some folders?
+Some AI agents, such as WorkBuddy, add MCP servers through a config file instead of a connector screen. Add this entry to the mcpServers object in the agent's MCP config file (keep any servers already there). Then restart the agent and finish the Frely sign-in and approval when it asks. If your agent does not accept a url field, use its remote or HTTP server option with the same address.
 
-Commands run in a sandbox that blocks credential folders such as `~/.ssh` and `~/.aws`, and tools only touch workspaces you registered. When a task needs more, the app asks. You decide on the Frely site and set how long the permission lasts. You can revoke it later. The AI app cannot approve its own request.
+```json
+{
+  "mcpServers": {
+    "frely": {
+      "url": "https://mcp.frely.cloud/mcp"
+    }
+  }
+}
+```
 
-## How do I remove Frely from my computer?
+## Tools
 
-Run `frely uninstall` in a local terminal. The command lists everything it will remove, then removes it after you type `yes`. It revokes this computer's access, removes the service, saved login, device identity, settings and caches, and finally the `frely` program. Your Providers and Agents stay in your account.
+The tools your AI app can call:
+
+| Tool | What it does |
+| --- | --- |
+| `list_devices` | Shows your linked computers, their workspaces and whether they are online. Call it first. |
+| `read` | Reads files and folders inside a workspace. |
+| `edit_file` | Creates or changes a file inside a workspace. |
+| `process` | Runs a command on the device and returns its output. |
+| `web_fetch` | Fetches a web page from the device. |
+| `request_permission / confirm_permission` | Asks you to approve access outside the default sandbox, for example ~/.ssh. You approve on the Frely site with a code. |
+| `models_list / models_set / models_invoke` | Lists your models and agents, turns one on or off for MCP, and asks it. Each enabled one also appears as <model>__invoke. |
+| `<mcp>__<tool>` | Tools of the cloud MCP servers you turned on for this connection. They run in the cloud and need no device. |
+| `local_mcp_list / local_mcp_call` | Reaches MCP servers running on a device, when the device exposes any. |
+| `frely_list / frely_call` | Manages your Frely account: API keys, credits, plans, orders and Creator items. They run in the cloud and need no device. A new connection may only read until you allow more on the Frely site; actions that move money or change credentials need your approval each time, and payments open a payment page. |
+| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. |
+
+## Safety and approval
+
+Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request.
+
+## Your data
+
+Device tool calls (read, edit_file, process, web_fetch and local MCP) are relayed to your own computer; FrelyMCP keeps only the OAuth sign-in records for them. Calls to models and agents go through the Frely gateway. Request Capture may keep their request and response content for a limited period, and the model provider you choose receives the request data it needs to answer. Details are in the Privacy Policy, sections 4 and 6. Frely Credit cannot be transferred; model calls are only metered against your own Credit.
+
+## If something does not work
+
+If list_devices shows no device, run frely mcp start on the computer and check that the CLI is signed in to the same Frely account. If a device is offline, turn the computer on and run the same command. Other questions: support@frely.cloud.

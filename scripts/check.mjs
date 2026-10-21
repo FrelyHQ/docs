@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { pages, root } from './lib.mjs';
 
 const required = ['title', 'description', 'applies_to', 'updated'];
-const forbidden = [/\binternal\b/i, /BEGIN [A-Z ]*PRIVATE KEY/, /sk-[A-Za-z0-9]{20,}/, /frely-docs/];
+const forbidden = [/BEGIN [A-Z ]*PRIVATE KEY/, /sk-[A-Za-z0-9]{20,}/, /frely-docs/, /ops\/secrets/, /\.internal\b/];
 const errors = [];
 for (const page of await pages()) {
   const fail = (message) => errors.push(`${page.path}: ${message}`);
