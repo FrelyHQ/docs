@@ -4,6 +4,7 @@ description: Add Frely to ChatGPT as a connector, then call your Frely models fr
 applies_to: any
 updated: 2026-10-21
 order: 1
+name: ChatGPT
 ---
 
 # Use Frely in ChatGPT
@@ -11,11 +12,14 @@ order: 1
 Connect once. ChatGPT signs in to Frely and can then list your models and call published models.
 
 ## Before you start
+<!-- id: before -->
 
 - A Frely account. Sign in at frely.cloud.
 - An enabled API key in your Frely workspace. Model calls are billed to your account through it.
 
-## Add Frely as a connector (recommended)
+## Add Frely as a connector
+<!-- id: connector -->
+<!-- badge: recommended -->
 
 1. In ChatGPT, open Settings and go to the section for apps and connectors. Create a new connector. Custom connectors can require developer mode, depending on your ChatGPT plan.
 2. Enter Frely as the name and paste this address as the MCP server URL:
@@ -31,6 +35,7 @@ Connect once. ChatGPT signs in to Frely and can then list your models and call p
    <!-- mock: chat -->
 
 ## Paste the install prompt
+<!-- id: prompt -->
 
 This route installs the Frely CLI, so ChatGPT needs to run commands on your computer.
 
@@ -39,6 +44,7 @@ This route installs the Frely CLI, so ChatGPT needs to run commands on your comp
 3. If ChatGPT asks you to reload the Skill, reload it. Then call the model by name.
 
 ## Use the command line
+<!-- id: cli -->
 
 1. Install the Frely CLI:
 
@@ -57,6 +63,7 @@ This route installs the Frely CLI, so ChatGPT needs to run commands on your comp
    ```
 
 ## If something does not work
+<!-- id: troubleshooting -->
 
 | Problem | What to do |
 | --- | --- |
