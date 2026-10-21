@@ -4,6 +4,7 @@ description: Add Frely to Claude as a custom connector, or to Claude Code as an 
 applies_to: any
 updated: 2026-10-21
 order: 2
+name: Claude
 ---
 
 # Use Frely in Claude
@@ -11,11 +12,14 @@ order: 2
 Connect once. Claude signs in to Frely and can then list your models and call published models.
 
 ## Before you start
+<!-- id: before -->
 
 - A Frely account. Sign in at frely.cloud.
 - An enabled API key in your Frely workspace. Model calls are billed to your account through it.
 
-## Claude app (web and desktop) (recommended)
+## Claude app (web and desktop)
+<!-- id: connector -->
+<!-- badge: recommended -->
 
 1. In Claude, open Settings, go to Connectors, and choose Add custom connector.
 2. Enter Frely as the name and paste this address as the URL:
@@ -31,6 +35,7 @@ Connect once. Claude signs in to Frely and can then list your models and call pu
    <!-- mock: chat -->
 
 ## Claude Code
+<!-- id: claude-code -->
 
 1. Add Frely as an MCP server:
 
@@ -49,6 +54,7 @@ Connect once. Claude signs in to Frely and can then list your models and call pu
    ```
 
 ## If something does not work
+<!-- id: troubleshooting -->
 
 | Problem | What to do |
 | --- | --- |
