@@ -1,6 +1,6 @@
 ---
 title: 在 ChatGPT 中使用 Frely
-description: 將 Frely 作為連接器新增至 ChatGPT,然後在對話中呼叫你的 Frely 模型。
+description: 將 Frely 作為連接器新增至 ChatGPT，然後在對話中呼叫你的 Frely 模型。
 applies_to: any
 updated: 2026-10-21
 order: 1
@@ -9,7 +9,7 @@ name: ChatGPT
 
 # 在 ChatGPT 中使用 Frely
 
-只需連接一次。ChatGPT 會登入 Frely,之後即可列出你的模型，並呼叫已發佈的模型。
+只需連接一次。ChatGPT 會登入 Frely，之後即可列出你的模型，並呼叫已發佈的模型。
 
 ## 開始之前
 <!-- id: before -->
@@ -29,7 +29,7 @@ name: ChatGPT
    ```
    <!-- mock: connector -->
 3. 驗證方式選擇 OAuth。不要加入 API key 或授權標頭。
-4. 在彈出的視窗中登入 Frely,並批准存取。
+4. 在彈出的視窗中登入 Frely，並批准存取。
    <!-- mock: consent -->
 5. 在新對話中，開啟 Frely 連接器，並要求 ChatGPT 使用你的模型。例如：「使用我的 Frely 模型 GPT-800 來審閱這段文字。」
    <!-- mock: chat -->
@@ -37,11 +37,11 @@ name: ChatGPT
 ## 貼上安裝提示
 <!-- id: prompt -->
 
-此方法會安裝 Frely CLI,因此 ChatGPT 需要在你的電腦上執行命令。
+此方法會安裝 Frely CLI，因此 ChatGPT 需要在你的電腦上執行命令。
 
 1. 在你的 Frely 工作區中，開啟模型並選擇 Copy for ChatGPT。如果模型是別人分享給你的，請使用對方傳送的安裝連結。
-2. 將它貼到 ChatGPT。ChatGPT 會安裝 Frely CLI、在你的瀏覽器中讓你登入 Frely,並將該模型新增為 Skill。
-3. 如果 ChatGPT 要求你重新載入 Skill,請重新載入。然後按名稱呼叫模型。
+2. 將它貼到 ChatGPT。ChatGPT 會安裝 Frely CLI、在你的瀏覽器中讓你登入 Frely，並將該模型新增為 Skill。
+3. 如果 ChatGPT 要求你重新載入 Skill，請重新載入。然後按名稱呼叫模型。
 
 ## 使用命令列
 <!-- id: cli -->
@@ -69,4 +69,4 @@ name: ChatGPT
 | --- | --- |
 | ChatGPT 沒有顯示 Frely 工具 | 在對話中開啟 Frely 連接器，或在新增後開始新對話。 |
 | 登入失敗或存取被拒 | 使用擁有該 API key 的同一 Frely 帳戶登入。移除連接器後重新新增，以重新開始登入。 |
-| 呼叫時顯示需要 API key | 在你的 Frely 工作區建立或啟用 API key,然後再試一次。 |
+| 呼叫時顯示需要 API key | 在你的 Frely 工作區建立或啟用 API key，然後再試一次。 |
