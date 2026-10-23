@@ -2,7 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
 export const root = new URL('../', import.meta.url).pathname;
-export const locales = ['en', 'zh-cn', 'ja'];
+export const locales = ['en', 'zh-cn', 'zh-hant', 'ru', 'es', 'pt'];
 
 export async function pages() {
   const out = [];
