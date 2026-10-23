@@ -12,7 +12,7 @@ The rendered site is at https://frely.cloud/docs/. This repository is the source
 | Path | Content |
 | --- | --- |
 | `en/` | English source (written first) |
-| `zh-cn/`, `zh-hant/`, `ru/`, `es/`, `pt/` | Translations; a missing page falls back to `en/` |
+| `zh-cn/`, `zh-hant/`, `ru/`, `es/`, `pt/`, `ja/`, `ko/` | Translations; a missing page falls back to `en/` |
 | `scripts/` | Checks and `llms.txt` generator |
 
 ## Contribute
