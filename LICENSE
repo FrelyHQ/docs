@@ -1,6 +1,6 @@
 This repository uses two licenses.
 
-- Documentation text (`en/`, `zh-cn/`, `ja/`, `*.md`): Creative Commons Attribution 4.0 International. See LICENSE-CC-BY-4.0.txt.
+- Documentation text (`en/`, `zh-cn/`, `zh-hant/`, `ru/`, `es/`, `pt/`, `*.md`): Creative Commons Attribution 4.0 International. See LICENSE-CC-BY-4.0.txt.
 - Code samples inside the documentation and everything under `scripts/` and `.github/`: Apache License 2.0. See LICENSE-APACHE-2.0.txt.
 
 "Frely" and the Frely logo are trademarks of Frely. Neither license grants trademark rights.
