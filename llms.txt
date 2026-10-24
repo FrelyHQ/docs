@@ -4,6 +4,7 @@
 
 ## Pages
 
+- [Let AI help run your servers without handing over your SSH keys](https://github.com/FrelyHQ/docs/blob/main/en/blog/ai-server-ops-without-ssh-keys.md): Giving an AI assistant ssh access from your laptop exposes every key in ~/.ssh. Connecting the server itself to your AI account keeps keys off the table and every permission revocable.
 - [Account and sign-in](https://github.com/FrelyHQ/docs/blob/main/en/faq/account.md): Creating an account, signing in, keeping it safe, and closing it.
 - [Billing, Credit and refunds](https://github.com/FrelyHQ/docs/blob/main/en/faq/billing.md): Credit top-ups, Creator plans, renewal, cancellation and refunds.
 - [Creating and selling on Frely](https://github.com/FrelyHQ/docs/blob/main/en/faq/creating.md): What creators can publish, what buyers receive, and how privacy of your work is handled.
