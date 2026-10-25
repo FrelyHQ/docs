@@ -19,7 +19,7 @@ You publish the Skill to Frely and mark which files are paid:
 - **Paid files** are exact files or whole folders, for example `scripts/` or `reference/advanced.md`.
 - **You set a price for each pass length**: choose from 1 hour, 8 hours, 24 hours, 7 days, 30 days, or forever. Offer one or all six.
 
-Buyers install it with one command: `frely item install <item-id>`. It works with ChatGPT, Codex, Claude Code and other tools that use Skills. While a pass is active, the paid files are fetched with the Skill. When it expires, the install stops fetching the paid part. A `forever` pass lets the buyer keep a local copy for good and includes later updates.
+Buyers install it with one command: `frely item install <username/skill-name>`, for example `frely item install ada/review`. It works with ChatGPT, Codex, Claude Code and other tools that use Skills. While a pass is active, the paid files are fetched with the Skill. When it expires, the install stops fetching the paid part. A `forever` pass lets the buyer keep a local copy for good and includes later updates.
 
 ## Publish with one message
 
