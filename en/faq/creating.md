@@ -1,6 +1,6 @@
 ---
 title: Creating and selling on Frely
-description: What creators can publish, what buyers receive, and how privacy of your work is handled.
+description: Answers for creators on Frely: what you can publish and sell, what buyers receive, and how the privacy of your work is handled.
 applies_to: any
 updated: 2026-10-26
 order: 5
