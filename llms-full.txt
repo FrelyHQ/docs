@@ -211,6 +211,13 @@ A Prompt, Skill, Agent or workflow that you have the right to publish. Define it
 
 Related: [Pricing](https://frely.cloud/pricing/) · [Security and data](https://frely.cloud/security/)
 
+## Where does my published item show up?
+<!-- id: where-listed -->
+
+A new Skill, MCP or Agent shows on your profile page (`frely.cloud/@<username>`) and in your library. The public Store lists only products Frely picks, so your item does not appear there unless Frely lists it. Other people reach your item through your profile page, a share link or a pass you give them. Open Visibility on the item to keep it to yourself, show it on your profile page, or show it to the Teams you choose.
+
+Related: [Pricing](https://frely.cloud/pricing/)
+
 ## What is the difference between a hosted Agent and a download-install item?
 <!-- id: hosted-vs-install -->
 
@@ -605,6 +612,11 @@ In Claude, open Settings, go to Connectors, choose Add custom connector, enter F
 
 In ChatGPT, open Settings and go to the section for apps and connectors. Create a new connector, paste the address above, choose OAuth and sign in to Frely. Custom connectors can require developer mode, depending on your ChatGPT plan.
 
+## Codex
+<!-- id: codex -->
+
+Run: codex mcp add frelymcp --url https://mcp.frely.cloud/mcp. Codex starts the OAuth sign-in: sign in to Frely and approve access. Do not add a token or an authorization header.
+
 ## Install with a config file
 <!-- id: config -->
 
@@ -637,7 +649,7 @@ The tools your AI app can call:
 | `<mcp>__<tool>` | Tools of the cloud MCP servers you turned on for this connection. They run in the cloud and need no device. |
 | `local_mcp_list / local_mcp_call` | Reaches MCP servers running on a device, when the device exposes any. |
 | `frely_list / frely_call` | Manages your Frely account: API keys, credits, plans, orders and Creator items. They run in the cloud and need no device. A new connection may only read until you allow more on the Frely site; actions that move money or change credentials need your approval each time, and payments open a payment page. |
-| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. |
+| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, official Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. Items that creators publish are on their profile pages, not in the Store. |
 
 ## Safety and approval
 <!-- id: safety -->

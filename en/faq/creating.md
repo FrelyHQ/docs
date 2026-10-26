@@ -2,7 +2,7 @@
 title: Creating and selling on Frely
 description: What creators can publish, what buyers receive, and how privacy of your work is handled.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-10-26
 order: 5
 ---
 
@@ -14,6 +14,13 @@ order: 5
 A Prompt, Skill, Agent or workflow that you have the right to publish. Define its task, inputs, outputs and limits. What you sell is access to the capability, and your core prompts, code and workflows are not handed to buyers.
 
 Related: [Pricing](https://frely.cloud/pricing/) · [Security and data](https://frely.cloud/security/)
+
+## Where does my published item show up?
+<!-- id: where-listed -->
+
+A new Skill, MCP or Agent shows on your profile page (`frely.cloud/@<username>`) and in your library. The public Store lists only products Frely picks, so your item does not appear there unless Frely lists it. Other people reach your item through your profile page, a share link or a pass you give them. Open Visibility on the item to keep it to yourself, show it on your profile page, or show it to the Teams you choose.
+
+Related: [Pricing](https://frely.cloud/pricing/)
 
 ## What is the difference between a hosted Agent and a download-install item?
 <!-- id: hosted-vs-install -->

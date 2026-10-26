@@ -2,7 +2,7 @@
 title: FrelyMCP
 description: FrelyMCP gives Claude, ChatGPT and other MCP clients access to your own computers, cloud tools, and the models and AI agents in your Frely account.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-10-26
 order: 3
 ---
 
@@ -45,6 +45,11 @@ In Claude, open Settings, go to Connectors, choose Add custom connector, enter F
 
 In ChatGPT, open Settings and go to the section for apps and connectors. Create a new connector, paste the address above, choose OAuth and sign in to Frely. Custom connectors can require developer mode, depending on your ChatGPT plan.
 
+## Codex
+<!-- id: codex -->
+
+Run: codex mcp add frelymcp --url https://mcp.frely.cloud/mcp. Codex starts the OAuth sign-in: sign in to Frely and approve access. Do not add a token or an authorization header.
+
 ## Install with a config file
 <!-- id: config -->
 
@@ -77,7 +82,7 @@ The tools your AI app can call:
 | `<mcp>__<tool>` | Tools of the cloud MCP servers you turned on for this connection. They run in the cloud and need no device. |
 | `local_mcp_list / local_mcp_call` | Reaches MCP servers running on a device, when the device exposes any. |
 | `frely_list / frely_call` | Manages your Frely account: API keys, credits, plans, orders and Creator items. They run in the cloud and need no device. A new connection may only read until you allow more on the Frely site; actions that move money or change credentials need your approval each time, and payments open a payment page. |
-| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. |
+| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, official Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. Items that creators publish are on their profile pages, not in the Store. |
 
 ## Safety and approval
 <!-- id: safety -->
