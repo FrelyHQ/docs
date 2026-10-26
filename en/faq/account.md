@@ -1,8 +1,8 @@
 ---
 title: Account and sign-in
-description: Creating an account, signing in, keeping it safe, and closing it.
+description: Answers about a Frely account: how to create it, how to sign in, how to keep it safe, and how to close it.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-10-26
 order: 1
 ---
 

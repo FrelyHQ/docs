@@ -1,8 +1,8 @@
 ---
 title: Using models and API keys
-description: API keys, client settings, usage, and what to do when a request fails.
+description: Answers about using models on Frely: API keys, client settings, usage, and what to do when a request fails.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-10-26
 order: 3
 ---
 

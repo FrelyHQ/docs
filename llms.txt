@@ -5,12 +5,12 @@
 ## Pages
 
 - [Let AI help run your servers without handing over your SSH keys](https://github.com/FrelyHQ/docs/blob/main/en/blog/ai-server-ops-without-ssh-keys.md): Giving an AI assistant ssh access from your laptop exposes every key in ~/.ssh. Connecting the server itself to your AI account keeps keys off the table and every permission revocable.
-- [Account and sign-in](https://github.com/FrelyHQ/docs/blob/main/en/faq/account.md): Creating an account, signing in, keeping it safe, and closing it.
-- [Billing, Credit and refunds](https://github.com/FrelyHQ/docs/blob/main/en/faq/billing.md): Credit top-ups, Creator plans, renewal, cancellation and refunds.
-- [Creating and selling on Frely](https://github.com/FrelyHQ/docs/blob/main/en/faq/creating.md): What creators can publish, what buyers receive, and how privacy of your work is handled.
-- [Devices and the Frely CLI](https://github.com/FrelyHQ/docs/blob/main/en/faq/devices.md): Installing the CLI, linking a computer, keeping it working, and removing it.
-- [Privacy and your data](https://github.com/FrelyHQ/docs/blob/main/en/faq/privacy-data.md): What Frely stores, for how long, and how to control analytics.
-- [Using models and API keys](https://github.com/FrelyHQ/docs/blob/main/en/faq/using-models.md): API keys, client settings, usage, and what to do when a request fails.
+- [Account and sign-in](https://github.com/FrelyHQ/docs/blob/main/en/faq/account.md): Answers about a Frely account: how to create it, how to sign in, how to keep it safe, and how to close it.
+- [Billing, Credit and refunds](https://github.com/FrelyHQ/docs/blob/main/en/faq/billing.md): Answers about Frely billing: topping up Credit, Creator plans, renewal, cancellation and refunds.
+- [Creating and selling on Frely](https://github.com/FrelyHQ/docs/blob/main/en/faq/creating.md): Answers for creators on Frely: what you can publish and sell, what buyers receive, and how the privacy of your work is handled.
+- [Devices and the Frely CLI](https://github.com/FrelyHQ/docs/blob/main/en/faq/devices.md): Answers about devices and the Frely CLI: installing the CLI, linking a computer to your account, keeping it working, and removing it.
+- [Privacy and your data](https://github.com/FrelyHQ/docs/blob/main/en/faq/privacy-data.md): Answers about privacy on Frely: what data Frely stores, for how long, and how to control analytics.
+- [Using models and API keys](https://github.com/FrelyHQ/docs/blob/main/en/faq/using-models.md): Answers about using models on Frely: API keys, client settings, usage, and what to do when a request fails.
 - [Use Frely in ChatGPT](https://github.com/FrelyHQ/docs/blob/main/en/guides/chatgpt.md): Add Frely to ChatGPT as a connector, then call your Frely models from a chat.
 - [Use Frely in Claude](https://github.com/FrelyHQ/docs/blob/main/en/guides/claude.md): Add Frely to Claude as a custom connector, or to Claude Code as an MCP server.
 - [FrelyMCP](https://github.com/FrelyHQ/docs/blob/main/en/guides/frelymcp.md): FrelyMCP gives Claude, ChatGPT and other MCP clients access to your own computers, cloud tools, and the models and AI agents in your Frely account.

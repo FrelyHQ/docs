@@ -1,8 +1,8 @@
 ---
 title: Billing, Credit and refunds
-description: Credit top-ups, Creator plans, renewal, cancellation and refunds.
+description: Answers about Frely billing: topping up Credit, Creator plans, renewal, cancellation and refunds.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-10-26
 order: 2
 ---
 
