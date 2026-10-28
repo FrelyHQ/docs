@@ -5,6 +5,7 @@
 ## Pages
 
 - [Let AI help run your servers without handing over your SSH keys](https://github.com/FrelyHQ/docs/blob/main/en/blog/ai-server-ops-without-ssh-keys.md): Giving an AI assistant ssh access from your laptop exposes every key in ~/.ssh. Connecting the server itself to your AI account keeps keys off the table and every permission revocable.
+- [What a sandbox runtime does when AI runs commands on your computer](https://github.com/FrelyHQ/docs/blob/main/en/blog/sandbox-runtime-protect-your-data-from-ai-commands.md): A plain explanation of Anthropic's open-source sandbox runtime (srt): how it limits files and network at the OS level, where it stops, and how Frely CLI uses it to keep your credentials away from the commands an AI runs.
 - [Account and sign-in](https://github.com/FrelyHQ/docs/blob/main/en/faq/account.md): Answers about a Frely account: how to create it, how to sign in, how to keep it safe, and how to close it.
 - [Billing, Credit and refunds](https://github.com/FrelyHQ/docs/blob/main/en/faq/billing.md): Answers about Frely billing: topping up Credit, Creator plans, renewal, cancellation and refunds.
 - [Creating and selling on Frely](https://github.com/FrelyHQ/docs/blob/main/en/faq/creating.md): Answers for creators on Frely: what you can publish and sell, what buyers receive, and how the privacy of your work is handled.
