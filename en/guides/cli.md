@@ -8,7 +8,7 @@ order: 0
 
 # Use Frely with Skill and CLI
 
-The Frely CLI is the command line for your Frely account. Its Skill teaches an AI agent that has a shell (Claude Code, Codex, pi and similar) to use that command line: sign in, call your Frely account, install what you bought, and run commands on your own computers. This is the recommended way to use Frely from an AI agent. If your AI app cannot run commands, use [FrelyMCP](./frelymcp.md) instead.
+The Frely CLI is the command line for your Frely account. Its Skill teaches an AI agent that has a shell (Claude Code, Codex, pi and similar) to use that command line: sign in, call your Frely account, install what you bought, and run commands on your own computers. This is the recommended way to use Frely from an AI agent. If your AI app cannot run commands, use the FrelyMCP guide (the alternative) instead.
 
 ## Before you start
 <!-- id: before -->
