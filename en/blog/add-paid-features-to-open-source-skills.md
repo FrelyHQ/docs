@@ -4,7 +4,7 @@ description: Keep your Skill open source and free, and put the advanced part beh
 date: 2026-10-24
 draft: true
 applies_to: any
-updated: 2026-10-24
+updated: 2026-10-28
 ---
 
 You wrote a Skill, put it on GitHub, and people use it. Some of it took far more work than the rest: the scripts, the templates, the deep reference files. You do not want to hide the Skill, and you do not want to hand over everything either.
@@ -40,7 +40,7 @@ It does the rest and gives you the item id and the install command.
 - **The paid part is visible to people who buy it.** The Skill is installed on the buyer's own device, so the free part is visible to everyone and the paid part to everyone with a pass. If the content must stay private, publish it as a hosted Agent instead, where users get results but never the prompt.
 - **Check the license.** If your repository's license forbids redistribution, do not publish it. The source URL is shown as attribution, and Frely does not verify repository ownership.
 - **Size limits.** The zipped Skill is at most 256 KiB, 64 files, 64 KiB per file and 128 KiB in total.
-- **What you earn is Frely Credit.** Usage fees are held for 30 days, then added to your Frely Credit, which you can spend on Frely. It cannot be withdrawn or transferred. Frely takes a platform fee from each sale, shown on the page when you set your prices.
+- **What you earn is Frely Credit.** Usage fees are held for a period, then added to your Frely Credit, which you can spend on Frely. On a commercial plan you can apply to cash out your sales earnings instead. Frely takes a platform fee from each sale, shown on the page when you set your prices.
 - **A free account can publish one item.**
 
 ## Update or take it down
