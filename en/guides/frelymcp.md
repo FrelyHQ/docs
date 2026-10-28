@@ -1,12 +1,14 @@
 ---
-title: FrelyMCP
-description: FrelyMCP gives Claude, ChatGPT and other MCP clients access to your own computers, cloud tools, and the models and AI agents in your Frely account.
+title: FrelyMCP (alternative)
+description: Use FrelyMCP when your AI app cannot run commands: it gives Claude, ChatGPT and other MCP clients access to your computers, cloud tools, models and agents.
 applies_to: any
-updated: 2026-10-26
+updated: 2026-10-28
 order: 3
 ---
 
-# FrelyMCP
+# FrelyMCP (alternative)
+
+The recommended way to use Frely from an AI agent is the Use Frely with Skill and CLI guide. Choose FrelyMCP instead when your AI app cannot run shell commands, for example ChatGPT or Claude in the browser. It connects with a URL and OAuth.
 
 FrelyMCP is the MCP server for your Frely account. Connect it once and your AI app can reach your own computers, the cloud tools you turned on, and your models and AI agents. You sign in with OAuth; no API key is pasted into the app.
 
@@ -18,7 +20,7 @@ Local: list the computers linked to your account, read files in a workspace, edi
 ## Before you start
 <!-- id: before -->
 
-You need a Frely account (sign in at frely.cloud). To use the device tools, install the Frely CLI on the computer and link it. Models, agents and cloud tools work without a device.
+You need a Frely account (sign in at frely.cloud). To use the device tools, install the Frely CLI on the computer and link it, as described in the Use Frely with Skill and CLI guide. Models, agents and cloud tools work without a device.
 
 ```sh
 curl -fsSL https://frely.cloud/install.sh | sh

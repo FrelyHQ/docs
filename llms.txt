@@ -13,4 +13,5 @@
 - [Using models and API keys](https://github.com/FrelyHQ/docs/blob/main/en/faq/using-models.md): Answers about using models on Frely: API keys, client settings, usage, and what to do when a request fails.
 - [Use Frely in ChatGPT](https://github.com/FrelyHQ/docs/blob/main/en/guides/chatgpt.md): Add Frely to ChatGPT as a connector, then call your Frely models from a chat.
 - [Use Frely in Claude](https://github.com/FrelyHQ/docs/blob/main/en/guides/claude.md): Add Frely to Claude as a custom connector, or to Claude Code as an MCP server.
-- [FrelyMCP](https://github.com/FrelyHQ/docs/blob/main/en/guides/frelymcp.md): FrelyMCP gives Claude, ChatGPT and other MCP clients access to your own computers, cloud tools, and the models and AI agents in your Frely account.
+- [Use Frely with Skill and CLI](https://github.com/FrelyHQ/docs/blob/main/en/guides/cli.md): Install the Frely CLI and its Skill so your AI agent can use your Frely account and control your own computers from a terminal.
+- [FrelyMCP (alternative)](https://github.com/FrelyHQ/docs/blob/main/en/guides/frelymcp.md): Use FrelyMCP when your AI app cannot run commands: it gives Claude, ChatGPT and other MCP clients access to your computers, cloud tools, models and agents.
