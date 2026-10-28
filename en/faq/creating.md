@@ -2,7 +2,7 @@
 title: Creating and selling on Frely
 description: Answers for creators on Frely: what you can publish and sell, what buyers receive, and how the privacy of your work is handled.
 applies_to: any
-updated: 2026-10-26
+updated: 2026-10-28
 order: 5
 ---
 
@@ -47,10 +47,10 @@ Signing in alone does not grant publishing. Check that your plan is active and t
 
 Related: [Terms of Service](https://frely.cloud/terms/)
 
-## Is sales revenue the same as profit or a withdrawable balance?
+## Can I cash out my sales earnings?
 <!-- id: revenue -->
 
-No. Creators must account for model and service running costs, and revenue is not automatically profit or a balance you can withdraw. Settlement follows the service terms.
+Sales earnings are added to your Frely Credit. On basic plans they stay as Credit you can spend on Frely. On commercial plans you can apply to receive eligible sales earnings as a cash payout; each application is reviewed and needs identity checks. Revenue is not the same as profit: you still cover model and service running costs. Settlement follows the service terms.
 
 Related: [Terms of Service](https://frely.cloud/terms/)
 
