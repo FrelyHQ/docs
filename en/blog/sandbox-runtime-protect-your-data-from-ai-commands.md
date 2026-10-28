@@ -3,6 +3,8 @@ title: What a sandbox runtime does when AI runs commands on your computer
 description: A plain explanation of Anthropic's open-source sandbox runtime (srt): how it limits files and network at the OS level, where it stops, and how Frely CLI uses it to keep your credentials away from the commands an AI runs.
 date: 2026-10-28
 draft: false
+applies_to: any
+updated: 2026-10-28
 ---
 
 Letting an AI run shell commands on your computer is useful. It can install dependencies, run tests, read logs, and fix the build. It also means a program you did not write, driven by text you did not review, runs with your user account.
