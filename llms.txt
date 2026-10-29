@@ -4,15 +4,37 @@
 
 ## Pages
 
-- [Let AI help run your servers without handing over your SSH keys](https://github.com/FrelyHQ/docs/blob/main/en/blog/ai-server-ops-without-ssh-keys.md): Giving an AI assistant ssh access from your laptop exposes every key in ~/.ssh. Connecting the server itself to your AI account keeps keys off the table and every permission revocable.
-- [What a sandbox runtime does when AI runs commands on your computer](https://github.com/FrelyHQ/docs/blob/main/en/blog/sandbox-runtime-protect-your-data-from-ai-commands.md): A plain explanation of Anthropic's open-source sandbox runtime (srt): how it limits files and network at the OS level, where it stops, and how Frely CLI uses it to keep your credentials away from the commands an AI runs.
-- [Account and sign-in](https://github.com/FrelyHQ/docs/blob/main/en/faq/account.md): Answers about a Frely account: how to create it, how to sign in, how to keep it safe, and how to close it.
-- [Billing, Credit and refunds](https://github.com/FrelyHQ/docs/blob/main/en/faq/billing.md): Answers about Frely billing: topping up Credit, Creator plans, renewal, cancellation and refunds.
-- [Creating and selling on Frely](https://github.com/FrelyHQ/docs/blob/main/en/faq/creating.md): Answers for creators on Frely: what you can publish and sell, what buyers receive, and how the privacy of your work is handled.
-- [Devices and the Frely CLI](https://github.com/FrelyHQ/docs/blob/main/en/faq/devices.md): Answers about devices and the Frely CLI: installing the CLI, linking a computer to your account, keeping it working, and removing it.
-- [Privacy and your data](https://github.com/FrelyHQ/docs/blob/main/en/faq/privacy-data.md): Answers about privacy on Frely: what data Frely stores, for how long, and how to control analytics.
-- [Using models and API keys](https://github.com/FrelyHQ/docs/blob/main/en/faq/using-models.md): Answers about using models on Frely: API keys, client settings, usage, and what to do when a request fails.
-- [Use Frely in ChatGPT](https://github.com/FrelyHQ/docs/blob/main/en/guides/chatgpt.md): Add Frely to ChatGPT as a connector, then call your Frely models from a chat.
-- [Use Frely in Claude](https://github.com/FrelyHQ/docs/blob/main/en/guides/claude.md): Add Frely to Claude as a custom connector, or to Claude Code as an MCP server.
-- [Use Frely with Skill and CLI](https://github.com/FrelyHQ/docs/blob/main/en/guides/cli.md): Install the Frely CLI and its Skill so your AI agent can use your Frely account and control your own computers from a terminal.
-- [FrelyMCP (alternative)](https://github.com/FrelyHQ/docs/blob/main/en/guides/frelymcp.md): Use FrelyMCP when your AI app cannot run commands: it gives Claude, ChatGPT and other MCP clients access to your computers, cloud tools, models and agents.
+- [Let AI help run your servers without handing over your SSH keys](https://frely.cloud/blog/ai-server-ops-without-ssh-keys/): Giving an AI assistant ssh access from your laptop exposes every key in ~/.ssh. Connecting the server itself to your AI account keeps keys off the table and every permission revocable.
+- [What a sandbox runtime does when AI runs commands on your computer](https://frely.cloud/blog/sandbox-runtime-protect-your-data-from-ai-commands/): A plain explanation of Anthropic's open-source sandbox runtime (srt): how it limits files and network at the OS level, where it stops, and how Frely CLI uses it to keep your credentials away from the commands an AI runs.
+- [How do I add another computer?](https://cli.frely.cloud/docs/help/add-another-computer/): Add more computers behind the same MCP URL.
+- [How long does device access last, and how do I renew it?](https://cli.frely.cloud/docs/help/authorization-expiry/): How long device access lasts and how to renew it.
+- [Which commands does the CLI have?](https://cli.frely.cloud/docs/help/commands/): The main commands of the Frely CLI.
+- [How do I connect ChatGPT or Claude to my computer?](https://cli.frely.cloud/docs/help/connect-chatgpt-or-claude/): Connect ChatGPT or Claude to your computer through FrelyMCP.
+- [How do I connect Claude Code or Codex?](https://cli.frely.cloud/docs/help/connect-claude-code-or-codex/): Connect Claude Code or Codex to FrelyMCP with one command.
+- [Something does not work. How do I diagnose it?](https://cli.frely.cloud/docs/help/doctor/): Diagnose sign-in, installation and service problems with frely doctor.
+- [How do I install Frely CLI?](https://cli.frely.cloud/docs/help/how-do-i-install/): Install Frely CLI and link your computer with one command.
+- [How do I install a Frely Agent, Prompt or Skill?](https://cli.frely.cloud/docs/help/install-agents-and-items/): Install and run a Frely Agent, Prompt or Skill from the terminal.
+- [How do I install on a server with no browser?](https://cli.frely.cloud/docs/help/install-on-a-server/): Install on a server with no browser using a one-time install command.
+- [How do I install only the program, without the device service?](https://cli.frely.cloud/docs/help/install-only/): Install the frely program without the device service.
+- [Is it safe to let an AI use my computer?](https://cli.frely.cloud/docs/help/is-it-safe/): How access, the sandbox and credentials are limited on your computer.
+- [How do I let remote AI use an MCP server that runs on my computer?](https://cli.frely.cloud/docs/help/local-mcp-servers/): Let remote AI use an MCP server that runs on your computer.
+- [How do I sign in or out?](https://cli.frely.cloud/docs/help/login-and-logout/): Sign in, sign out and stop remote control of the computer.
+- [How do I manage my Frely account (API keys, credits, plans, orders) from the terminal or an AI?](https://cli.frely.cloud/docs/help/manage-account-from-cli/): Manage API keys, credits, plans and orders with frely api.
+- [What is my MCP URL, and does it change?](https://cli.frely.cloud/docs/help/mcp-url/): The FrelyMCP address, and how to print it.
+- [A command failed because of the sandbox. What can I do?](https://cli.frely.cloud/docs/help/sandbox-and-permissions/): What to do when the sandbox blocks a command.
+- [How do I share a local model (Ollama, LM Studio, vLLM)?](https://cli.frely.cloud/docs/help/share-local-model/): Share a local model as a Frely Provider.
+- [How do I uninstall Frely CLI?](https://cli.frely.cloud/docs/help/uninstall/): Remove Frely CLI and what it keeps.
+- [How do I update Frely CLI?](https://cli.frely.cloud/docs/help/update/): Update Frely CLI and keep your login, device and workspace.
+- [What can the AI do on my computer?](https://cli.frely.cloud/docs/help/what-can-the-ai-do/): The tools an AI client can use on your computer.
+- [What is Frely CLI?](https://cli.frely.cloud/docs/help/what-is-frely-cli/): What Frely CLI is and what an AI agent can do on a computer you connect.
+- [Which folder does the AI get access to?](https://cli.frely.cloud/docs/help/which-workspace-is-shared/): Which folders the AI can use and how to change them.
+- [Account and sign-in](https://frely.cloud/docs/faq/account/): Answers about a Frely account: how to create it, how to sign in, how to keep it safe, and how to close it.
+- [Billing, Credit and refunds](https://frely.cloud/docs/faq/billing/): Answers about Frely billing: topping up Credit, Creator plans, renewal, cancellation and refunds.
+- [Creating and selling on Frely](https://frely.cloud/docs/faq/creating/): Answers for creators on Frely: what you can publish and sell, what buyers receive, and how the privacy of your work is handled.
+- [Devices and the Frely CLI](https://frely.cloud/docs/faq/devices/): Answers about devices and the Frely CLI: installing the CLI, linking a computer to your account, keeping it working, and removing it.
+- [Privacy and your data](https://frely.cloud/docs/faq/privacy-data/): Answers about privacy on Frely: what data Frely stores, for how long, and how to control analytics.
+- [Using models and API keys](https://frely.cloud/docs/faq/using-models/): Answers about using models on Frely: API keys, client settings, usage, and what to do when a request fails.
+- [Use Frely in ChatGPT](https://frely.cloud/docs/chatgpt/): Add Frely to ChatGPT as a connector, then call your Frely models from a chat.
+- [Use Frely in Claude](https://frely.cloud/docs/claude/): Add Frely to Claude as a custom connector, or to Claude Code as an MCP server.
+- [Use Frely with Skill and CLI](https://frely.cloud/docs/cli/): Install the Frely CLI and its Skill so your AI agent can use your Frely account and control your own computers from a terminal.
+- [FrelyMCP (alternative)](https://frely.cloud/docs/frelymcp/): Use FrelyMCP when your AI app cannot run commands: it gives Claude, ChatGPT and other MCP clients access to your computers, cloud tools, models and agents.
