@@ -41,7 +41,7 @@ Console: [My Devices](https://frely.cloud/user/device)
 
 指令會在沙盒中執行，沙盒會封鎖 ~/.ssh 和 ~/.aws 等憑證資料夾，而工具亦只會接觸你已註冊的工作區。當任務需要更多權限時，應用程式必須提出請求，由你在 Frely 網站上決定是否批准以及有效期多久，之後你亦可以撤銷。AI 應用程式無法自行批准自己的請求。
 
-Related: [FrelyMCP 指南](https://frely.cloud/docs/frelymcp/)
+Related: [FrelyMCP 指南](https://frely.cloud/docs/frelymcp/) · [How the sandbox protects your data](https://frely.cloud/connect/sandbox/)
 
 ## 如何從我的電腦移除 Frely？
 <!-- id: uninstall -->

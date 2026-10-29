@@ -41,7 +41,7 @@ Console: [My Devices](https://frely.cloud/user/device)
 
 コマンドはサンドボックス内で実行されます。サンドボックスは ~/.ssh や ~/.aws などの認証情報フォルダーへのアクセスをブロックし、ツールが触れるのは登録済みのワークスペースだけです。タスクにそれ以上のアクセスが必要な場合は、アプリが必ず確認を求めます。許可するかどうかとその有効期間は Frely サイト上で自分で判断でき、後で取り消すこともできます。AI アプリが自分の要求を自分で承認することはできません。
 
-Related: [FrelyMCP ガイド](https://frely.cloud/docs/frelymcp/)
+Related: [FrelyMCP ガイド](https://frely.cloud/docs/frelymcp/) · [How the sandbox protects your data](https://frely.cloud/connect/sandbox/)
 
 ## コンピューターから Frely を削除するにはどうすればよいですか？
 <!-- id: uninstall -->

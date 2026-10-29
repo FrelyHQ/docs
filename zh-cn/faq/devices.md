@@ -41,7 +41,7 @@ Console: [我的设备](https://frely.cloud/user/device)
 
 命令在沙箱中运行，默认禁止访问 ~/.ssh、~/.aws 等凭证目录，工具只触及你登记的工作区。当任务需要更多权限时，应用必须提出申请，由你在 Frely 网站上决定并选择有效时长，之后可随时撤销。AI 应用不能自己批准自己的申请。
 
-Related: [FrelyMCP 指南](https://frely.cloud/docs/frelymcp/)
+Related: [FrelyMCP 指南](https://frely.cloud/docs/frelymcp/) · [How the sandbox protects your data](https://frely.cloud/connect/sandbox/)
 
 ## 如何从电脑上移除 Frely？
 <!-- id: uninstall -->

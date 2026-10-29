@@ -41,7 +41,7 @@ Console: [내 기기](https://frely.cloud/user/device)
 
 명령어는 ~/.ssh, ~/.aws 같은 자격 증명 폴더에 대한 접근을 차단하는 샌드박스에서 실행되며, 도구는 사용자가 등록한 작업 공간에만 접근합니다. 작업에 더 많은 권한이 필요하면 앱이 반드시 요청해야 하며, 사용자가 Frely 사이트에서 허용 여부와 유효 기간을 결정하고 나중에 철회할 수도 있습니다. AI 앱이 스스로 요청을 승인할 수는 없습니다.
 
-Related: [FrelyMCP 가이드](https://frely.cloud/docs/frelymcp/)
+Related: [FrelyMCP 가이드](https://frely.cloud/docs/frelymcp/) · [How the sandbox protects your data](https://frely.cloud/connect/sandbox/)
 
 ## 컴퓨터에서 Frely는 어떻게 제거하나요?
 <!-- id: uninstall -->
