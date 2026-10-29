@@ -93,3 +93,5 @@ We would rather you know the edges:
 ## The short version
 
 An AI that can run commands is as safe as the walls around those commands. srt builds the walls at the operating-system level: write nowhere except the project, hide the credential folders, and send network traffic through a gatekeeper. Frely CLI keeps those walls up by default, makes opening them a deliberate, narrow, human-approved step, and tells you plainly what it does not cover.
+
+For a short summary of what the sandbox covers, see [how the sandbox protects your data](https://frely.cloud/connect/sandbox/).

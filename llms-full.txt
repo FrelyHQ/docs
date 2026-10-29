@@ -151,6 +151,8 @@ We would rather you know the edges:
 
 An AI that can run commands is as safe as the walls around those commands. srt builds the walls at the operating-system level: write nowhere except the project, hide the credential folders, and send network traffic through a gatekeeper. Frely CLI keeps those walls up by default, makes opening them a deliberate, narrow, human-approved step, and tells you plainly what it does not cover.
 
+For a short summary of what the sandbox covers, see [how the sandbox protects your data](https://frely.cloud/connect/sandbox/).
+
 ## Account and sign-in
 
 Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/account.md
@@ -387,7 +389,7 @@ Console: [My Devices](https://frely.cloud/user/device)
 
 Commands run in a sandbox that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch workspaces you registered. When a task needs more, the app must ask, you decide on the Frely site and how long it lasts, and you can revoke it later. The AI app cannot approve its own request.
 
-Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
+Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/) · [How the sandbox protects your data](https://frely.cloud/connect/sandbox/)
 
 ## How do I remove Frely from my computer?
 <!-- id: uninstall -->
@@ -825,7 +827,7 @@ The tools your AI app can call:
 ## Safety and approval
 <!-- id: safety -->
 
-Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request.
+Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request. See [how the sandbox protects your data](https://frely.cloud/connect/sandbox/).
 
 ## Your data
 <!-- id: data -->
