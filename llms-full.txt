@@ -179,7 +179,7 @@ Source: https://cli.frely.cloud/docs/help/commands/
 
 # Which commands does the CLI have?
 
-Main ones: `frely mcp start|status|stop|remove`, `frely mcp workspace list|add|remove`, `frely mcp local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely agent install|run|status|remove`, `frely item install|update|trust`, `frely provider share|list` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely mcp`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
+Main ones: `frely mcp start|status|stop|remove`, `frely mcp workspace list|add|remove`, `frely mcp local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely agent install|run|result|runs|cancel|status|remove`, `frely item install|update|trust`, `frely provider share|list` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely mcp`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
 
@@ -282,6 +282,16 @@ Source: https://cli.frely.cloud/docs/help/login-and-logout/
 `frely mcp start` signs in when needed, so you do not need a separate login first. Use `frely login` to sign in on its own (add `--no-browser` on a machine without a browser, or `--email <address>` then `--code <6-digit code>`), and `frely logout` to sign out; logout also revokes the `frely api` authorization. To stop remote control of the computer, use `frely mcp stop` (pause) or `frely mcp remove` (revoke every client and uninstall the service).
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md) · [Frely App (My Devices)](https://frely.cloud/app/)
+
+## What happens when a Frely Agent takes a long time?
+
+Source: https://cli.frely.cloud/docs/help/long-agent-tasks/
+
+# What happens when a Frely Agent takes a long time?
+
+`frely agent run` records the run on your computer and a background worker waits for the Agent, so a long task survives a cut-off command. The task keeps running on Frely; reading its state costs nothing. If the command ends before the answer, run `frely agent result --last --wait` (or `frely agent result <runId> --wait`). While the run is going, `frely agent result <runId>` shows its newest progress line when the Agent wrote one. Stop a run with `frely agent cancel <runId>`; the task stops on Frely too and what already ran is charged. A price set by the Agent's creator is charged when the task completes, when you cancel it, or when the Agent already delivered output; a task that fails without output is not charged. To hide progress lines, add `--no-progress-summary` to `frely agent run`, or write `When calling Frely Agents, pass --no-progress-summary.` in the `AGENTS.md` or `CLAUDE.md` your AI reads.
+
+Related: [Install a Frely Agent, Prompt or Skill](./install-agents-and-items.md)
 
 ## How do I manage my Frely account (API keys, credits, plans, orders) from the terminal or an AI?
 
@@ -553,6 +563,13 @@ API tools: `creator.subscription`
 <!-- id: cannot-publish -->
 
 Signing in alone does not grant publishing. Check that your plan is active and that you meet the publishing eligibility and commercial terms.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+## How can my own A2A service show progress to buyers?
+<!-- id: a2a-progress -->
+
+Return an A2A Task in state `working` and put one short sentence in `status.message` (a text part). A2A clients that read the Task see the latest sentence while it runs. Frely charges your per-call price when the Task reaches `completed`, not when the first response arrives.
 
 Related: [Terms of Service](https://frely.cloud/terms/)
 

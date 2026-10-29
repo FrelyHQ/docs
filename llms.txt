@@ -19,6 +19,7 @@
 - [Is it safe to let an AI use my computer?](https://cli.frely.cloud/docs/help/is-it-safe/): How access, the sandbox and credentials are limited on your computer.
 - [How do I let remote AI use an MCP server that runs on my computer?](https://cli.frely.cloud/docs/help/local-mcp-servers/): Let remote AI use an MCP server that runs on your computer.
 - [How do I sign in or out?](https://cli.frely.cloud/docs/help/login-and-logout/): Sign in, sign out and stop remote control of the computer.
+- [What happens when a Frely Agent takes a long time?](https://cli.frely.cloud/docs/help/long-agent-tasks/): How a long Agent run returns a task ID, how to wait for it, cancel it and turn progress lines off.
 - [How do I manage my Frely account (API keys, credits, plans, orders) from the terminal or an AI?](https://cli.frely.cloud/docs/help/manage-account-from-cli/): Manage API keys, credits, plans and orders with frely api.
 - [What is my MCP URL, and does it change?](https://cli.frely.cloud/docs/help/mcp-url/): The FrelyMCP address, and how to print it.
 - [A command failed because of the sandbox. What can I do?](https://cli.frely.cloud/docs/help/sandbox-and-permissions/): What to do when the sandbox blocks a command.

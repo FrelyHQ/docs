@@ -47,6 +47,13 @@ Signing in alone does not grant publishing. Check that your plan is active and t
 
 Related: [Terms of Service](https://frely.cloud/terms/)
 
+## How can my own A2A service show progress to buyers?
+<!-- id: a2a-progress -->
+
+Return an A2A Task in state `working` and put one short sentence in `status.message` (a text part). A2A clients that read the Task see the latest sentence while it runs. Frely charges your per-call price when the Task reaches `completed`, not when the first response arrives.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
 ## Can I cash out my sales earnings?
 <!-- id: revenue -->
 
