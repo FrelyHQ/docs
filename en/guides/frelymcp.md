@@ -89,7 +89,7 @@ The tools your AI app can call:
 ## Safety and approval
 <!-- id: safety -->
 
-Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request.
+Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request. See [how the sandbox protects your data](https://frely.cloud/connect/sandbox/).
 
 ## Your data
 <!-- id: data -->
