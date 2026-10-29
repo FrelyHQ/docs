@@ -41,7 +41,7 @@ Console: [Mis dispositivos](https://frely.cloud/user/device)
 
 Los comandos se ejecutan en un sandbox que bloquea carpetas de credenciales como ~/.ssh y ~/.aws, y las herramientas solo tocan los espacios de trabajo que registraste. Cuando una tarea necesita más, la app debe pedirlo, tú decides en el sitio de Frely y por cuánto tiempo, y puedes revocarlo más tarde. La app de IA no puede aprobar su propia solicitud.
 
-Related: [Guía de FrelyMCP](https://frely.cloud/docs/frelymcp/)
+Related: [Guía de FrelyMCP](https://frely.cloud/docs/frelymcp/) · [How the sandbox protects your data](https://frely.cloud/connect/sandbox/)
 
 ## ¿Cómo elimino Frely de mi computadora?
 <!-- id: uninstall -->

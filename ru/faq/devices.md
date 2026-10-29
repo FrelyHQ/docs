@@ -41,7 +41,7 @@ Console: [Мои устройства](https://frely.cloud/user/device)
 
 Команды выполняются в песочнице, которая блокирует папки с учётными данными, такие как ~/.ssh и ~/.aws, а инструменты работают только с теми рабочими областями, которые вы зарегистрировали. Когда задаче требуется больше, приложение обязано спросить: вы решаете на сайте Frely, разрешить ли доступ и на какой срок, и позже можете его отозвать. AI-приложение не может одобрить собственный запрос.
 
-Related: [руководство по FrelyMCP](https://frely.cloud/docs/frelymcp/)
+Related: [руководство по FrelyMCP](https://frely.cloud/docs/frelymcp/) · [How the sandbox protects your data](https://frely.cloud/connect/sandbox/)
 
 ## Как удалить Frely с компьютера?
 <!-- id: uninstall -->
