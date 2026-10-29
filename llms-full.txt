@@ -179,7 +179,7 @@ Source: https://cli.frely.cloud/docs/help/commands/
 
 # Which commands does the CLI have?
 
-Main ones: `frely mcp start|status|stop|remove`, `frely mcp workspace list|add|remove`, `frely mcp local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely agent install|run|wait|cancel|status|remove`, `frely item install|update|trust`, `frely provider share|list` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely mcp`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
+Main ones: `frely mcp start|status|stop|remove`, `frely mcp workspace list|add|remove`, `frely mcp local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely agent install|run|result|runs|cancel|status|remove`, `frely item install|update|trust`, `frely provider share|list` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely mcp`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
 
@@ -289,7 +289,7 @@ Source: https://cli.frely.cloud/docs/help/long-agent-tasks/
 
 # What happens when a Frely Agent takes a long time?
 
-`frely agent run` waits up to 50 seconds. If the Agent has not finished, the command exits with code 0 and prints state `running`, a `taskId` and, when the Agent reported one, a progress line. The task keeps running on Frely after the command ends. Read it with `frely agent wait <username/name> <taskId> --json`: each call waits up to 50 seconds, costs nothing, and prints state `completed`, `failed`, `canceled` or `running` again. After 10 waits in a row, stop and keep the `taskId`; you can read the task later. Stop a task with `frely agent cancel <username/name> <taskId>`; what already ran is charged. A price set by the Agent's creator is charged when the task completes, when you cancel it, or when the Agent already delivered output; a task that fails without output is not charged. To hide progress lines, add `--no-progress-summary` to `frely agent run`, or write `When calling Frely Agents, pass --no-progress-summary (progressSummary=false).` in the `AGENTS.md` or `CLAUDE.md` your AI reads.
+`frely agent run` records the run on your computer and a background worker waits for the Agent, so a long task survives a cut-off command. The task keeps running on Frely; reading its state costs nothing. If the command ends before the answer, run `frely agent result --last --wait` (or `frely agent result <runId> --wait`). While the run is going, `frely agent result <runId>` shows its newest progress line when the Agent wrote one. Stop a run with `frely agent cancel <runId>`; the task stops on Frely too and what already ran is charged. A price set by the Agent's creator is charged when the task completes, when you cancel it, or when the Agent already delivered output; a task that fails without output is not charged. To hide progress lines, add `--no-progress-summary` to `frely agent run`, or write `When calling Frely Agents, pass --no-progress-summary.` in the `AGENTS.md` or `CLAUDE.md` your AI reads.
 
 Related: [Install a Frely Agent, Prompt or Skill](./install-agents-and-items.md)
 
