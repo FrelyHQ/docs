@@ -11,28 +11,28 @@ order: 4
 ## How do I install the Frely CLI and link my computer?
 <!-- id: install -->
 
-Run the install script: curl -fsSL https://frely.cloud/install.sh | sh. It installs frely and runs frely mcp start, which opens the browser to sign in (new accounts can register on the same page), asks you to approve the device and prints your MCP URL. Run it again at any time to update.
+Run the install script: curl -fsSL https://frely.cloud/install.sh | sh. It installs frely and runs frely link on, which opens the browser to sign in (new accounts can register on the same page), asks you to approve the device and prints your MCP URL. Run it again at any time to update.
 
 Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
 
 ## My AI app shows no device.
 <!-- id: no-device -->
 
-Run frely mcp start on the computer, and make sure the CLI is signed in to the same Frely account as your AI app.
+Run frely link on on the computer, and make sure the CLI is signed in to the same Frely account as your AI app.
 
 Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
 
 ## A device shows as offline.
 <!-- id: offline -->
 
-Turn the computer on, connect it to the internet and run frely mcp start again. frely doctor shows the account, installation, version, MCP and service state; add -v for details.
+Turn the computer on, connect it to the internet and run frely link on again. frely doctor shows the account, installation, version, MCP and service state; add -v for details.
 
 Console: [My Devices](https://frely.cloud/user/device)
 
 ## Device access expired.
 <!-- id: expired -->
 
-Device MCP access lasts 90 days by default. Run frely mcp start to approve again (frely mcp start --days with a number from 1 to 365 renews early). The MCP URL does not change. You can manage your computers under My Devices on the Frely website.
+Device MCP access lasts 90 days by default. Run frely link on to approve again (frely link on --days with a number from 1 to 365 renews early). The MCP URL does not change. You can manage your computers under My Devices on the Frely website.
 
 Console: [My Devices](https://frely.cloud/user/device)
 

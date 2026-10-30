@@ -59,7 +59,7 @@ Tell your agent what you want in plain words, for example: "List my Frely comput
 To let your agent work on another computer, run this on that computer. It signs in, approves the computer and starts the background service. For a server without a browser, create a one-time install command in the Frely app under My Devices.
 
 ```sh
-frely mcp start
+frely link on
 ```
 
 ## Commands your agent uses
@@ -78,4 +78,4 @@ frely mcp start
 ## If something does not work
 <!-- id: help -->
 
-If the agent does not use Frely, restart the agent session and check that `frely skill install` finished. If `frely` is not found, open a new terminal and run it again. If a computer shows as offline, run `frely mcp start` on it. If a command asks for approval, open the link it prints and confirm on the Frely site. Other questions: support@frely.cloud.
+If the agent does not use Frely, restart the agent session and check that `frely skill install` finished. If `frely` is not found, open a new terminal and run it again. If a computer shows as offline, run `frely link on` on it. If a command asks for approval, open the link it prints and confirm on the Frely site. Other questions: support@frely.cloud.
