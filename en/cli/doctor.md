@@ -2,7 +2,7 @@
 title: Something does not work. How do I diagnose it?
 description: Diagnose sign-in, installation and service problems with frely doctor.
 applies_to: any
-updated: 2026-10-29
+updated: 2026-11-02
 site: cli
 category: Maintenance
 order: 19

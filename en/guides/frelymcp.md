@@ -2,7 +2,7 @@
 title: FrelyMCP (alternative)
 description: Use FrelyMCP when your AI app cannot run commands: it gives Claude, ChatGPT and other MCP clients access to your computers, cloud tools, models and agents.
 applies_to: any
-updated: 2026-10-28
+updated: 2026-11-02
 order: 3
 ---
 

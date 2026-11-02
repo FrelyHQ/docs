@@ -2,7 +2,7 @@
 title: How do I let remote AI use an MCP server that runs on my computer?
 description: Let remote AI use an MCP server that runs on your computer.
 applies_to: any
-updated: 2026-10-29
+updated: 2026-11-02
 site: cli
 category: Using your computer
 order: 11

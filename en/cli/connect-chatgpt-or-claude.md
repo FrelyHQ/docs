@@ -2,7 +2,7 @@
 title: How do I connect ChatGPT or Claude to my computer?
 description: Connect ChatGPT or Claude to your computer through FrelyMCP.
 applies_to: any
-updated: 2026-10-29
+updated: 2026-11-02
 site: cli
 category: Connecting AI clients
 order: 6

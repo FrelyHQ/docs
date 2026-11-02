@@ -2,7 +2,7 @@
 title: Use Frely with Skill and CLI
 description: Install the Frely CLI and its Skill so your AI agent can use your Frely account and control your own computers from a terminal.
 applies_to: any
-updated: 2026-10-28
+updated: 2026-11-02
 order: 0
 ---
 

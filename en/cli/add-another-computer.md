@@ -2,7 +2,7 @@
 title: How do I add another computer?
 description: Add more computers behind the same MCP URL.
 applies_to: any
-updated: 2026-10-29
+updated: 2026-11-02
 site: cli
 category: Using your computer
 order: 10

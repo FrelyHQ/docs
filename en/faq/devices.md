@@ -2,7 +2,7 @@
 title: Devices and the Frely CLI
 description: Answers about devices and the Frely CLI: installing the CLI, linking a computer to your account, keeping it working, and removing it.
 applies_to: any
-updated: 2026-10-26
+updated: 2026-11-02
 order: 4
 ---
 

@@ -2,7 +2,7 @@
 title: Which folder does the AI get access to?
 description: Which folders the AI can use and how to change them.
 applies_to: any
-updated: 2026-10-29
+updated: 2026-11-02
 site: cli
 category: Getting started
 order: 5

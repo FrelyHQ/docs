@@ -2,7 +2,7 @@
 title: How long does device access last, and how do I renew it?
 description: How long device access lasts and how to renew it.
 applies_to: any
-updated: 2026-10-29
+updated: 2026-11-02
 site: cli
 category: Account and API
 order: 16

@@ -23,7 +23,7 @@ FrelyMCP 是你 Frely 帳戶的 MCP 伺服器。只需連接一次，你的 AI �
 ```sh
 curl -fsSL https://frely.cloud/install.sh | sh
 frely login
-frely mcp start
+frely link on
 ```
 
 ## 連接你的 AI 應用程式
@@ -92,4 +92,4 @@ https://mcp.frely.cloud/mcp
 ## 如無法正常運作
 <!-- id: help -->
 
-如果 list_devices 沒有顯示任何裝置，請在電腦上執行 frely mcp start，並確認 CLI 已登入同一個 Frely 帳戶。如果裝置離線，請開啟該電腦並執行相同指令。其他查詢：support@frely.cloud。
+如果 list_devices 沒有顯示任何裝置，請在電腦上執行 frely link on，並確認 CLI 已登入同一個 Frely 帳戶。如果裝置離線，請開啟該電腦並執行相同指令。其他查詢：support@frely.cloud。

@@ -2,7 +2,7 @@
 title: How do I install Frely CLI?
 description: Install Frely CLI and link your computer with one command.
 applies_to: any
-updated: 2026-10-29
+updated: 2026-11-02
 site: cli
 category: Getting started
 order: 2

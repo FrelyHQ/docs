@@ -179,7 +179,7 @@ Source: https://cli.frely.cloud/docs/help/commands/
 
 # Which commands does the CLI have?
 
-Main ones: `frely link on|off|status|stop` (`on` lets others control this computer; `off` turns remote control off until you run `on` again here), `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely agent install|run|result|runs|cancel|status|remove`, `frely item install|update|trust`, `frely provider share|list` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
+Main ones: `frely link on|status|stop|off|auto-update`, `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely agent install|run|result|runs|cancel|status|remove`, `frely item install|update|trust`, `frely provider share|list` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
 
@@ -259,7 +259,7 @@ Source: https://cli.frely.cloud/docs/help/is-it-safe/
 
 # Is it safe to let an AI use my computer?
 
-Access is limited to the folders you share. File tools reject symlink escapes and cap reads and writes at 1 MiB. Commands run as your OS user inside an OS sandbox: credential folders are unreadable, writes are limited to the workspace and the temp directory, and network goes through a proxy. If the computer cannot sandbox, commands are refused rather than run unsandboxed. The MCP URL contains no secret, and the CLI keeps its execution key encrypted in the OS credential store. You can revoke access any time with `frely link off`.
+Access is limited to the folders you share. File tools reject symlink escapes and cap reads and writes at 1 MiB. Commands run as your OS user inside an OS sandbox: credential folders are unreadable, writes are limited to the workspace and the temp directory, and network goes through a proxy. If the computer cannot sandbox, commands are refused rather than run unsandboxed. The MCP URL contains no secret, and the CLI keeps its execution key encrypted in the OS credential store. You can revoke access any time with `frely link off`; it revokes every client and locks remote control on that computer until you run `frely link on` there.
 
 Related: [How the sandbox protects your data](https://frely.cloud/connect/sandbox/) · [Credential and installation boundaries](https://github.com/FrelyHQ/frely-cli/blob/main/docs/credential-storage.md) · [Security policy](https://github.com/FrelyHQ/frely-cli/blob/main/SECURITY.md) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
 
@@ -279,7 +279,7 @@ Source: https://cli.frely.cloud/docs/help/login-and-logout/
 
 # How do I sign in or out?
 
-`frely link on` signs in when needed, so you do not need a separate login first. Use `frely login` to sign in on its own (add `--no-browser` on a machine without a browser, or `--email <address>` then `--code <6-digit code>`), and `frely logout` to sign out; logout also revokes the `frely api` authorization. To stop remote control of the computer, use `frely link stop` (pause) or `frely link off` (revoke every client and uninstall the service).
+`frely link on` signs in when needed, so you do not need a separate login first. Use `frely login` to sign in on its own (add `--no-browser` on a machine without a browser, or `--email <address>` then `--code <6-digit code>`), and `frely logout` to sign out; logout also revokes the `frely api` authorization. To stop remote control of the computer, use `frely link stop` (pause) or `frely link off` (revoke every client and uninstall the service). `frely link off` also locks remote control on this computer: the Frely web page cannot turn it on again, and only `frely link on` on this computer lifts the lock.
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md) · [Frely App (My Devices)](https://frely.cloud/app/)
 
@@ -309,7 +309,7 @@ Source: https://cli.frely.cloud/docs/help/mcp-url/
 
 # What is my MCP URL, and does it change?
 
-The FrelyMCP address is https://mcp.frely.cloud/mcp for every computer on your account. It never changes and contains no secret; clients hold OAuth tokens. Run `frely link status` to print the URL, the workspace, the authorization expiry and the service state.
+The FrelyMCP address is https://mcp.frely.cloud/mcp for every computer on your account. It never changes and contains no secret; clients hold OAuth tokens. Run `frely link on` to print the URL, or `frely link status` (add `--json` for scripts) to show the URL, the workspace, the authorization expiry and the service state.
 
 Related: [FrelyMCP endpoint](https://mcp.frely.cloud/mcp) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
 

@@ -11,28 +11,28 @@ order: 4
 ## Frely CLI는 어떻게 설치하고 컴퓨터를 어떻게 연결하나요?
 <!-- id: install -->
 
-설치 스크립트를 실행하세요: curl -fsSL https://frely.cloud/install.sh | sh. 이 스크립트는 frely를 설치하고 frely mcp start를 실행합니다. 그러면 브라우저가 열려 로그인할 수 있고(새 계정은 같은 페이지에서 가입할 수 있습니다), 기기 승인 안내가 표시된 후 MCP URL이 출력됩니다. 업데이트하려면 언제든 다시 실행하면 됩니다.
+설치 스크립트를 실행하세요: curl -fsSL https://frely.cloud/install.sh | sh. 이 스크립트는 frely를 설치하고 frely link on를 실행합니다. 그러면 브라우저가 열려 로그인할 수 있고(새 계정은 같은 페이지에서 가입할 수 있습니다), 기기 승인 안내가 표시된 후 MCP URL이 출력됩니다. 업데이트하려면 언제든 다시 실행하면 됩니다.
 
 Related: [FrelyMCP 가이드](https://frely.cloud/docs/frelymcp/)
 
 ## AI 앱에 기기가 표시되지 않습니다.
 <!-- id: no-device -->
 
-컴퓨터에서 frely mcp start를 실행하고, CLI가 AI 앱과 같은 Frely 계정으로 로그인되어 있는지 확인하세요.
+컴퓨터에서 frely link on를 실행하고, CLI가 AI 앱과 같은 Frely 계정으로 로그인되어 있는지 확인하세요.
 
 Related: [FrelyMCP 가이드](https://frely.cloud/docs/frelymcp/)
 
 ## 기기가 오프라인으로 표시됩니다.
 <!-- id: offline -->
 
-컴퓨터를 켜고 인터넷에 연결한 다음 frely mcp start를 다시 실행하세요. frely doctor는 계정, 설치, 버전, MCP 및 서비스 상태를 표시하며, -v를 붙이면 자세한 내용을 확인할 수 있습니다.
+컴퓨터를 켜고 인터넷에 연결한 다음 frely link on를 다시 실행하세요. frely doctor는 계정, 설치, 버전, MCP 및 서비스 상태를 표시하며, -v를 붙이면 자세한 내용을 확인할 수 있습니다.
 
 Console: [내 기기](https://frely.cloud/user/device)
 
 ## 기기 접근 권한이 만료되었습니다.
 <!-- id: expired -->
 
-기기의 MCP 접근 권한은 기본적으로 90일 동안 유지됩니다. 다시 승인하려면 frely mcp start를 실행하세요(frely mcp start --days에 1부터 365까지의 숫자를 지정하면 미리 갱신됩니다). MCP URL은 변경되지 않습니다. Frely 웹사이트의 My Devices(내 기기)에서 컴퓨터를 관리할 수 있습니다.
+기기의 MCP 접근 권한은 기본적으로 90일 동안 유지됩니다. 다시 승인하려면 frely link on를 실행하세요(frely link on --days에 1부터 365까지의 숫자를 지정하면 미리 갱신됩니다). MCP URL은 변경되지 않습니다. Frely 웹사이트의 My Devices(내 기기)에서 컴퓨터를 관리할 수 있습니다.
 
 Console: [내 기기](https://frely.cloud/user/device)
 
