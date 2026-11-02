@@ -2,6 +2,7 @@ import { existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { pages, root } from './lib.mjs';
 
+const sites = ['frely', 'cli'];
 const required = ['title', 'description', 'applies_to', 'updated'];
 const forbidden = [/BEGIN [A-Z ]*PRIVATE KEY/, /sk-[A-Za-z0-9]{20,}/, /frely-docs/, /ops\/secrets/, /\.internal\b/];
 const errors = [];
@@ -10,6 +11,11 @@ for (const page of await pages()) {
   if (!page.hasFrontmatter) fail('missing frontmatter');
   for (const key of required) if (!page.meta[key]) fail(`missing frontmatter key ${key}`);
   if (page.meta.updated && !/^\d{4}-\d{2}-\d{2}$/.test(page.meta.updated)) fail('updated must be YYYY-MM-DD');
+  if (page.meta.site !== undefined && !sites.includes(page.meta.site)) fail(`site must be one of ${sites.join(', ')}`);
+  if (page.meta.site === 'cli') {
+    if (!page.meta.category) fail('cli pages need a category');
+    if (!/^\d+$/.test(page.meta.order ?? '')) fail('cli pages need a numeric order');
+  }
   for (const pattern of forbidden) if (pattern.test(page.body)) fail(`forbidden pattern ${pattern}`);
   for (const [, target] of page.body.matchAll(/\]\((\.{1,2}\/[^)#\s]+)(?:#[^)]*)?\)/g)) {
     if (!existsSync(resolve(root, dirname(page.path), target))) fail(`broken link ${target}`);

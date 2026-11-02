@@ -1,8 +1,8 @@
 ---
 title: Privacy and your data
-description: What Frely stores, for how long, and how to control analytics.
+description: Answers about privacy on Frely: what data Frely stores, for how long, and how to control analytics.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-10-26
 order: 6
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Creating and selling on Frely
-description: What creators can publish, what buyers receive, and how privacy of your work is handled.
+description: Answers for creators on Frely: what you can publish and sell, what buyers receive, and how the privacy of your work is handled.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-10-28
 order: 5
 ---
 
@@ -14,6 +14,13 @@ order: 5
 A Prompt, Skill, Agent or workflow that you have the right to publish. Define its task, inputs, outputs and limits. What you sell is access to the capability, and your core prompts, code and workflows are not handed to buyers.
 
 Related: [Pricing](https://frely.cloud/pricing/) · [Security and data](https://frely.cloud/security/)
+
+## Where does my published item show up?
+<!-- id: where-listed -->
+
+A new Skill, MCP or Agent shows on your profile page (`frely.cloud/@<username>`) and in your library. The public Store lists only products Frely picks, so your item does not appear there unless Frely lists it. Other people reach your item through your profile page, a share link or a pass you give them. Open Visibility on the item to keep it to yourself, show it on your profile page, or show it to the Teams you choose.
+
+Related: [Pricing](https://frely.cloud/pricing/)
 
 ## What is the difference between a hosted Agent and a download-install item?
 <!-- id: hosted-vs-install -->
@@ -40,10 +47,17 @@ Signing in alone does not grant publishing. Check that your plan is active and t
 
 Related: [Terms of Service](https://frely.cloud/terms/)
 
-## Is sales revenue the same as profit or a withdrawable balance?
+## How can my own A2A service show progress to buyers?
+<!-- id: a2a-progress -->
+
+Return an A2A Task in state `working` and put one short sentence in `status.message` (a text part). A2A clients that read the Task see the latest sentence while it runs. Frely charges your per-call price when the Task reaches `completed`, not when the first response arrives.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+## Can I cash out my sales earnings?
 <!-- id: revenue -->
 
-No. Creators must account for model and service running costs, and revenue is not automatically profit or a balance you can withdraw. Settlement follows the service terms.
+Sales earnings are added to your Frely Credit. On basic plans they stay as Credit you can spend on Frely. On commercial plans you can apply to receive eligible sales earnings as a cash payout; each application is reviewed and needs identity checks. Revenue is not the same as profit: you still cover model and service running costs. Settlement follows the service terms.
 
 Related: [Terms of Service](https://frely.cloud/terms/)
 

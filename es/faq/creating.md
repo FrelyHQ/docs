@@ -1,8 +1,8 @@
 ---
 title: Crear y vender en Frely
-description: Qué pueden publicar los creadores, qué reciben los compradores y cómo se maneja la privacidad de tu trabajo.
+description: Respuestas para creadores en Frely: qué puedes publicar y vender, qué reciben los compradores y cómo se maneja la privacidad de tu trabajo.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-10-26
 order: 5
 ---
 
@@ -11,16 +11,23 @@ order: 5
 ## ¿Qué puedo publicar?
 <!-- id: what-sell -->
 
-Un Prompt, una Skill, un Agent o un flujo de trabajo sobre el que tengas derecho a publicar. Define su tarea, sus entradas, sus salidas y sus límites. Lo que vendes es acceso a la capacidad, y tus prompts, código y flujos de trabajo esenciales no se entregan a los compradores.
+Un Prompt, Skill, Agent o flujo de trabajo que tengas derecho a publicar. Define su tarea, entradas, salidas y límites. Lo que vendes es acceso a la capacidad, y tus prompts principales, código y flujos de trabajo no se entregan a los compradores.
 
 Related: [Precios](https://frely.cloud/pricing/) · [Seguridad y datos](https://frely.cloud/security/)
+
+## ¿Dónde aparece mi elemento publicado?
+<!-- id: where-listed -->
+
+Un Skill, MCP o Agent nuevo aparece en tu página de perfil (`frely.cloud/@<username>`) y en tu biblioteca. El Store público lista solo productos que Frely elige, así que tu elemento no aparece allí a menos que Frely lo liste. Otras personas llegan a tu elemento a través de tu página de perfil, un enlace para compartir o un pase que les des. Abre Visibilidad en el elemento para conservarlo solo para ti, mostrarlo en tu página de perfil o mostrarlo a los equipos que elijas.
+
+Related: [Precios](https://frely.cloud/pricing/)
 
 ## ¿Cuál es la diferencia entre un Agent alojado y un elemento de descarga e instalación?
 <!-- id: hosted-vs-install -->
 
-Un Agent alojado se ejecuta en Frely y los compradores lo usan a través de Frely, de modo que tu contenido privado se queda contigo. Un Prompt o Skill de descarga e instalación entrega sus archivos al propio dispositivo del comprador; la parte gratuita es visible para cualquier persona que lo instale, y Frely no puede retirar una copia ya instalada. El contenido que deba permanecer privado debe publicarse como un Agent alojado en un plan Creator de pago.
+Un Agent alojado se ejecuta en Frely y los compradores lo usan a través de Frely, así que tu contenido privado se queda contigo. Un Prompt o Skill de descarga e instalación entrega sus archivos al dispositivo del propio comprador; la parte gratuita es visible para todos los que lo instalen, y Frely no puede retirar una copia ya instalada. El contenido que deba permanecer privado debe publicarse como Agent alojado en un plan Creator de pago.
 
-Related: [Términos del servicio](https://frely.cloud/terms/)
+Related: [Términos del Servicio](https://frely.cloud/terms/)
 
 API tools: `skills.list`, `agents.list`
 
@@ -33,23 +40,23 @@ Related: [Precios](https://frely.cloud/pricing/)
 
 API tools: `creator.subscription`
 
-## No tengo acceso de publicación ni de producto.
+## No me aparece la entrada de publicación ni de producto.
 <!-- id: cannot-publish -->
 
-Iniciar sesión por sí solo no otorga la publicación. Verifica que tu plan esté activo y que cumples los requisitos de elegibilidad para publicar y los términos comerciales.
+Iniciar sesión por sí solo no otorga permisos para publicar. Verifica que tu plan esté activo y que cumplas los requisitos de elegibilidad para publicar y los términos comerciales.
 
-Related: [Términos del servicio](https://frely.cloud/terms/)
+Related: [Términos del Servicio](https://frely.cloud/terms/)
 
-## ¿Los ingresos por ventas son lo mismo que la ganancia o un saldo retirable?
+## ¿Los ingresos por ventas son lo mismo que las ganancias o un saldo que se pueda retirar?
 <!-- id: revenue -->
 
-No. Los creadores deben asumir los costos de ejecución de modelos y servicios, y los ingresos no son automáticamente ganancias ni un saldo que puedas retirar. La liquidación se rige por los términos del servicio.
+No. Los creadores deben contabilizar los costos de ejecución de modelos y servicios, y los ingresos no son automáticamente ganancias ni un saldo que puedas retirar. La liquidación sigue los términos del servicio.
 
-Related: [Términos del servicio](https://frely.cloud/terms/)
+Related: [Términos del Servicio](https://frely.cloud/terms/)
 
 ## ¿Qué derechos necesito?
 <!-- id: rights -->
 
-Debes tener los derechos para distribuir los archivos y el contenido que publicas, y mencionar la fuente original cuando sea necesario. No se permite el contenido que infrinja los derechos de otras personas.
+Debes tener los derechos para distribuir los archivos y el contenido que publiques, y citar la fuente original cuando sea necesario. El contenido que infrinja los derechos de otros no está permitido.
 
-Related: [Términos del servicio](https://frely.cloud/terms/)
+Related: [Términos del Servicio](https://frely.cloud/terms/)

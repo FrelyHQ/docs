@@ -1,7 +1,7 @@
 # Frely docs
 
 User documentation for [Frely](https://frely.cloud): FAQ, client guides, FrelyMCP and CLI guides.
-The rendered site is at https://frely.cloud/docs/. This repository is the source; the site builds from a pinned commit of it.
+The rendered sites are https://frely.cloud/docs/ and https://cli.frely.cloud/docs/ (pages with `site: cli`). This repository is the source; the site builds from a pinned commit of it.
 
 - Plain Markdown with a small frontmatter block. Read it here, in an editor, or feed it to an AI agent.
 - `llms.txt` lists every page; `llms-full.txt` holds all pages in one file.
@@ -11,7 +11,7 @@ The rendered site is at https://frely.cloud/docs/. This repository is the source
 
 | Path | Content |
 | --- | --- |
-| `en/` | English source (written first) |
+| `en/` | English source (written first); `en/cli/` holds the pages of https://cli.frely.cloud/docs/ |
 | `zh-cn/`, `zh-hant/`, `ru/`, `es/`, `pt/`, `ja/`, `ko/` | Translations; a missing page falls back to `en/` |
 | `scripts/` | Checks and `llms.txt` generator |
 

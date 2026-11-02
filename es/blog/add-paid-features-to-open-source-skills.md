@@ -40,7 +40,7 @@ Hace el resto y te da el item id y el comando de instalación.
 - **La parte de pago es visible para quienes la compran.** El Skill se instala en el propio dispositivo del comprador, así que la parte gratuita es visible para todos y la parte de pago para todos los que tienen un pase. Si el contenido debe permanecer privado, publícalo en su lugar como un Agent alojado, donde los usuarios obtienen resultados pero nunca el prompt.
 - **Revisa la licencia.** Si la licencia de tu repositorio prohíbe la redistribución, no lo publiques. La URL de origen se muestra como atribución, y Frely no verifica la propiedad del repositorio.
 - **Límites de tamaño.** El Skill comprimido en zip tiene como máximo 256 KiB, 64 archivos, 64 KiB por archivo y 128 KiB en total.
-- **Recibes Frely Credit, no dinero en efectivo.** Las tarifas de uso se retienen durante 30 días y luego se agregan a tu Frely Credit, que puedes gastar en Frely. No se puede retirar ni transferir. Frely cobra una comisión de plataforma en cada venta, que se muestra en la página cuando estableces tus precios.
+- **Lo que ganas es Frely Credit.** Las tarifas de uso se retienen durante un período y luego se agregan a tu Frely Credit, que puedes gastar en Frely. Con un plan comercial puedes solicitar, en su lugar, retirar en efectivo tus ganancias por ventas. Frely cobra una comisión de plataforma en cada venta, que se muestra en la página cuando estableces tus precios.
 - **Una cuenta gratuita puede publicar un item.**
 
 ## Actualizar o retirar la publicación

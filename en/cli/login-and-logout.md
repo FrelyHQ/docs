@@ -1,0 +1,15 @@
+---
+title: How do I sign in or out?
+description: Sign in, sign out and stop remote control of the computer.
+applies_to: any
+updated: 2026-11-02
+site: cli
+category: Account and API
+order: 15
+---
+
+# How do I sign in or out?
+
+`frely link on` signs in when needed, so you do not need a separate login first. Use `frely login` to sign in on its own (add `--no-browser` on a machine without a browser, or `--email <address>` then `--code <6-digit code>`), and `frely logout` to sign out; logout also revokes the `frely api` authorization. To stop remote control of the computer, use `frely link stop` (pause) or `frely link off` (revoke every client and uninstall the service). `frely link off` also locks remote control on this computer: the Frely web page cannot turn it on again, and only `frely link on` on this computer lifts the lock.
+
+Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md) · [Frely App (My Devices)](https://frely.cloud/app/)

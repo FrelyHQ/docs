@@ -31,3 +31,21 @@ async function parse(path, locale) {
   }
   return { path: relative(root, path), locale, meta, body: match ? match[2] : text, hasFrontmatter: Boolean(match) };
 }
+
+/** The site that renders a page: `site` in the frontmatter, `frely` when missing. */
+export const siteOf = (page) => page.meta.site ?? 'frely';
+
+const origins = { frely: 'https://frely.cloud', cli: 'https://cli.frely.cloud' };
+const slugOf = (page) => page.path.split('/').pop().replace(/\.md$/, '');
+
+/** The address of a page on its home site; null for a folder no site renders. */
+export function homeUrl(page) {
+  const site = siteOf(page);
+  const slug = slugOf(page);
+  if (site === 'cli') return `${origins.cli}/docs/help/${slug}/`;
+  const [, folder] = page.path.split('/');
+  if (folder === 'faq') return `${origins.frely}/docs/faq/${slug}/`;
+  if (folder === 'guides') return `${origins.frely}/docs/${slug}/`;
+  if (folder === 'blog') return `${origins.frely}/blog/${slug}/`;
+  return null;
+}

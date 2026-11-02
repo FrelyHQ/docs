@@ -1,12 +1,14 @@
 ---
-title: FrelyMCP
-description: FrelyMCP gives Claude, ChatGPT and other MCP clients access to your own computers, cloud tools, and the models and AI agents in your Frely account.
+title: FrelyMCP (alternative)
+description: Use FrelyMCP when your AI app cannot run commands: it gives Claude, ChatGPT and other MCP clients access to your computers, cloud tools, models and agents.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-11-02
 order: 3
 ---
 
-# FrelyMCP
+# FrelyMCP (alternative)
+
+The recommended way to use Frely from an AI agent is the Use Frely with Skill and CLI guide. Choose FrelyMCP instead when your AI app cannot run shell commands, for example ChatGPT or Claude in the browser. It connects with a URL and OAuth.
 
 FrelyMCP is the MCP server for your Frely account. Connect it once and your AI app can reach your own computers, the cloud tools you turned on, and your models and AI agents. You sign in with OAuth; no API key is pasted into the app.
 
@@ -18,12 +20,12 @@ Local: list the computers linked to your account, read files in a workspace, edi
 ## Before you start
 <!-- id: before -->
 
-You need a Frely account (sign in at frely.cloud). To use the device tools, install the Frely CLI on the computer and link it. Models, agents and cloud tools work without a device.
+You need a Frely account (sign in at frely.cloud). To use the device tools, install the Frely CLI on the computer and link it, as described in the Use Frely with Skill and CLI guide. Models, agents and cloud tools work without a device.
 
 ```sh
 curl -fsSL https://frely.cloud/install.sh | sh
 frely login
-frely mcp start
+frely link on
 ```
 
 ## Connect your AI app
@@ -44,6 +46,11 @@ In Claude, open Settings, go to Connectors, choose Add custom connector, enter F
 <!-- id: chatgpt -->
 
 In ChatGPT, open Settings and go to the section for apps and connectors. Create a new connector, paste the address above, choose OAuth and sign in to Frely. Custom connectors can require developer mode, depending on your ChatGPT plan.
+
+## Codex
+<!-- id: codex -->
+
+Run: codex mcp add frelymcp --url https://mcp.frely.cloud/mcp. Codex starts the OAuth sign-in: sign in to Frely and approve access. Do not add a token or an authorization header.
 
 ## Install with a config file
 <!-- id: config -->
@@ -77,12 +84,12 @@ The tools your AI app can call:
 | `<mcp>__<tool>` | Tools of the cloud MCP servers you turned on for this connection. They run in the cloud and need no device. |
 | `local_mcp_list / local_mcp_call` | Reaches MCP servers running on a device, when the device exposes any. |
 | `frely_list / frely_call` | Manages your Frely account: API keys, credits, plans, orders and Creator items. They run in the cloud and need no device. A new connection may only read until you allow more on the Frely site; actions that move money or change credentials need your approval each time, and payments open a payment page. |
-| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. |
+| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, official Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. Items that creators publish are on their profile pages, not in the Store. |
 
 ## Safety and approval
 <!-- id: safety -->
 
-Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request.
+Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request. See [how the sandbox protects your data](https://frely.cloud/connect/sandbox/).
 
 ## Your data
 <!-- id: data -->
@@ -92,4 +99,4 @@ Device tool calls (read, edit_file, process, web_fetch and local MCP) are relaye
 ## If something does not work
 <!-- id: help -->
 
-If list_devices shows no device, run frely mcp start on the computer and check that the CLI is signed in to the same Frely account. If a device is offline, turn the computer on and run the same command. Other questions: support@frely.cloud.
+If list_devices shows no device, run frely link on on the computer and check that the CLI is signed in to the same Frely account. If a device is offline, turn the computer on and run the same command. Other questions: support@frely.cloud.

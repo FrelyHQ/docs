@@ -4,7 +4,7 @@
 
 ## Let AI help run your servers without handing over your SSH keys
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/blog/ai-server-ops-without-ssh-keys.md
+Source: https://frely.cloud/blog/ai-server-ops-without-ssh-keys/
 
 More and more people let an AI assistant read logs, edit configs and restart services. The obvious way is to run an AI that can execute commands on your own computer and let it `ssh` into the server.
 
@@ -43,7 +43,7 @@ On the server, the boundary is "the system user Frely runs as, plus the sandbox"
 
 1. **Install as a dedicated user, not root.** For example, create `frely-ops` and give it access to your app folder only. The sandbox limits writes, not what the user can read, so the smaller the user's rights, the better. To read system logs without root, add the user to the `adm` and `systemd-journal` groups.
 2. **Check the sandbox works.** On Linux, install `bubblewrap`, `socat` and `ripgrep`; `frely doctor` tells you whether the sandbox is available. Older systems such as CentOS 7 cannot run it; there, approve "run without the sandbox" for a limited time instead of leaving it open.
-3. **Share only the folder you need.** Set `FRELY_WORKSPACE=/srv/myapp` instead of sharing the whole home folder, and keep the device authorization short.
+3. **Share only the folder you need.** Set `FRELY_WORKSPACE=/srv/myapp` instead of the default `~/Frely` folder, and keep the device authorization short.
 4. **Know what the docker group means.** A user in the `docker` group can read `docker logs` directly, which is handy, but that membership is as powerful as root.
 
 ## When ssh is still fine
@@ -60,9 +60,334 @@ When AI runs your servers, what matters is less how clever it is than what it ho
 
 [Get started with the Frely CLI](https://cli.frely.cloud/)
 
+## What a sandbox runtime does when AI runs commands on your computer
+
+Source: https://frely.cloud/blog/sandbox-runtime-protect-your-data-from-ai-commands/
+
+Letting an AI run shell commands on your computer is useful. It can install dependencies, run tests, read logs, and fix the build. It also means a program you did not write, driven by text you did not review, runs with your user account.
+
+By default, that account can read your SSH keys, your cloud credentials, your package registry tokens, and your browser profile. A command does not need to be malicious to cause damage. A prompt injection hidden in a web page or an issue comment can be enough to make a perfectly normal-looking command read a secret and send it somewhere.
+
+Asking "are you sure?" before every command does not fix this. People approve things they cannot fully read. A better answer is to make the dangerous thing impossible by default, and to let a person open a narrow door when it is really needed. That is what a sandbox is for.
+
+## What srt is
+
+`srt` is Anthropic's open-source sandbox runtime (`@anthropic-ai/sandbox-runtime`). It was built for Claude Code, and it can be used as a command-line tool or as a library. It wraps any process, and everything that process starts, in file and network limits enforced by the operating system. There is no container image and no virtual machine.
+
+Its own README calls it a beta research preview, so treat it as a strong building block rather than a finished guarantee.
+
+### How it limits files
+
+The file rules are simple to state:
+
+- **Reads are allowed everywhere by default.** You list the places to hide with `denyRead`, for example your credential folders.
+- **Writes are denied everywhere by default.** You list the places a command may write with `allowWrite`, usually the project folder and a temporary directory. `denyWrite` wins over `allowWrite`, so you can carve a protected file out of an allowed folder.
+
+The read side is a deny list, not an allow list. That is practical, because tools need to read many system files, but it also means the sandbox only hides what someone thought to list.
+
+### How it limits the network
+
+By default, no network access is allowed at all. A command can only reach the network through proxies that run outside the sandbox, and those proxies decide which domains are allowed.
+
+- **macOS:** the command runs under a generated Seatbelt profile (`sandbox-exec`) that only permits talking to a local proxy port.
+- **Linux:** the command runs under bubblewrap with its network namespace removed, so the only way out is through proxies reached over Unix sockets that are mounted into the sandbox.
+
+HTTP and HTTPS go through an HTTP proxy. Other TCP traffic goes through a SOCKS5 proxy. Both enforce the domain allow and deny lists. Unix sockets are blocked by default.
+
+### Why this is a good approach
+
+The limits live in the operating system, not in the AI's good behavior and not in a list of command names. A command can be rewritten, wrapped in a script, or obfuscated. It still cannot read a folder the sandbox hides or write outside the folders it was given. The same rules apply to every child process.
+
+## What srt does not do
+
+A sandbox is not a magic shield. The honest limits matter, because they decide what you can trust it for.
+
+- **It is only as tight as its configuration.** If the network allowlist is open, anything the command can read can be sent out. If a secret is not on the deny list, the sandbox does not hide it.
+- **Beta software.** The project says so itself, and its options may change.
+- **Platform differences.** It supports macOS and Linux. On Linux it needs bubblewrap, socat and ripgrep. Windows support is alpha in srt, and Frely CLI does not run sandboxed commands on Windows.
+- **Some options weaken it on purpose.** Allowing Unix sockets, nested sandboxes, or Apple Events each opens a way around the isolation. The README warns about these.
+- **It limits one command's process tree.** It does not protect you from a person who gives the AI their password, or from a file you copy out of the sandbox yourself.
+
+## How Frely CLI uses srt
+
+Frely CLI lets you control a computer from your AI: the AI asks, the CLI runs commands on your device. Every command that Frely CLI runs for a remote AI client goes through srt first. Here is what that looks like in practice, based on the CLI's source code.
+
+### The default
+
+- **Writes:** a command can write inside the workspace folder and the system temporary directory. Nothing else.
+- **Credential folders are hidden.** The CLI denies reads of SSH keys, AWS, Google Cloud, Kubernetes and GitHub CLI configuration, GnuPG keys, saved git credentials, and package registry token files (`.npmrc`, `.pypirc`, Cargo credentials). Frely's own device credentials can never be opened by any approval.
+- **Sensitive places stay write-protected.** Shell start-up files such as `.zshrc` and `.bashrc`, macOS LaunchAgents, and credential folders are protected from writes. A broad permission like "write under my home folder" does not include them. Opening one requires naming that exact path.
+- **`.git/hooks` stays blocked.** Hooks run programs outside the sandbox, so no approval opens them.
+- **It fails closed.** If the sandbox cannot start on a device (an unsupported platform or a missing dependency), the command is refused with a message that says why. It is never quietly run without the sandbox.
+
+### Asking for more, narrowly
+
+When a command needs something the sandbox hides, the AI cannot just take it. It asks, and the device owner approves on the Frely website, with a passkey or an authenticator code, not by tapping a button in the chat. The request names the reason and the exact command. The approval can be as narrow as one credential group (for example SSH, but not AWS), one cache folder, or one specific directory.
+
+If nothing narrow fits, the owner can approve running a command without the sandbox. That is the last choice, not the default, and the CLI's refusal messages push the AI to ask for the narrowest option first.
+
+### Git without handing over the door
+
+srt blocks writes to a repository's `.git/config`, because a git config can make git run programs later, outside the sandbox. That also blocks everyday commands like `git push -u` and `git remote add`.
+
+Frely CLI allows those writes for ordinary commands, then checks. It takes a copy of each `.git/config` in the workspace before the command, compares after it exits, and removes any setting that was added and would make git run a program, such as an fsmonitor, a credential helper, a custom pager, or a shell alias. The result tells the AI what was removed. Processes the command left running in the background are stopped.
+
+### Networking from inside the sandbox
+
+Because srt only routes HTTP, HTTPS and SOCKS traffic, tools like `ssh` need help. The CLI routes `ssh`, `scp` and `sftp` through the sandbox's proxy. For database clients and other raw TCP tools, a built-in `frely tunnel` opens a local port inside the sandbox. If you reach the internet through a local proxy (Clash, for example), `frely sandbox proxy` lets the sandbox use it. Frely only reads your proxy settings; it does not change them.
+
+### What Frely CLI's use of srt does not cover
+
+We would rather you know the edges:
+
+- **Outbound network is open by default.** The CLI does not restrict which domains a command can reach, so that npm, pip, git and curl keep working. This means the file rules are what protect your data: a secret the sandbox can read can also be sent out. The protection comes from keeping credentials out of reach, not from blocking the network.
+- **Most of your home folder is readable.** The deny list covers well-known credential locations, not everything private. Files you keep elsewhere (an `.env` file in another project, notes, documents) are readable by a command running in the sandbox.
+- **Approved access is real access.** If you approve SSH key access, the command can read the keys. Approve what you understand, and prefer the narrowest option.
+- **The `.git/config` guard is a check after the fact.** It undoes dangerous settings after the command exits. It looks at git's known program-running settings, and it notes a limit of its own: a process that escapes the cleanup between commands is caught at the next check, not instantly.
+- **It confines commands, not people.** The sandbox limits what a command can touch. It does not stop you from approving something unwise, and it is no substitute for a locked screen or a strong account sign-in.
+- **srt is a beta research preview,** and Frely CLI inherits that status.
+
+## The short version
+
+An AI that can run commands is as safe as the walls around those commands. srt builds the walls at the operating-system level: write nowhere except the project, hide the credential folders, and send network traffic through a gatekeeper. Frely CLI keeps those walls up by default, makes opening them a deliberate, narrow, human-approved step, and tells you plainly what it does not cover.
+
+For a short summary of what the sandbox covers, see [how the sandbox protects your data](https://frely.cloud/connect/sandbox/).
+
+## How do I add another computer?
+
+Source: https://cli.frely.cloud/docs/help/add-another-computer/
+
+# How do I add another computer?
+
+Run the install command on the new computer, or ask ChatGPT or Claude connected to FrelyMCP to add a computer: `list_devices` returns an install command. You can also create one in the Frely App under My Devices. Every computer where you ran `frely link on` appears behind the same MCP URL, and all clients share each computer's workspaces and running processes.
+
+Related: [Frely App (My Devices)](https://frely.cloud/app/) · [FrelyMCP endpoint](https://mcp.frely.cloud/mcp)
+
+## How long does device access last, and how do I renew it?
+
+Source: https://cli.frely.cloud/docs/help/authorization-expiry/
+
+# How long does device access last, and how do I renew it?
+
+Device MCP access lasts 90 days by default. Run `frely link on --days 1..365` to renew before it expires or choose another length. When it expires, requests and queued work stop (finished writes are not undone) and `frely link on` asks for approval again. The URL never changes. Manage your computers on the Frely website under My Devices.
+
+Related: [Frely App (My Devices)](https://frely.cloud/app/) · [Device MCP doc](https://github.com/FrelyHQ/frely-cli/blob/main/docs/device-mcp.md) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## Which commands does the CLI have?
+
+Source: https://cli.frely.cloud/docs/help/commands/
+
+# Which commands does the CLI have?
+
+Main ones: `frely link on|status|stop|off|auto-update`, `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely agent install|run|result|runs|cancel|status|remove`, `frely item install|update|trust`, `frely provider share|list` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
+
+Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I connect ChatGPT or Claude to my computer?
+
+Source: https://cli.frely.cloud/docs/help/connect-chatgpt-or-claude/
+
+# How do I connect ChatGPT or Claude to my computer?
+
+First run `frely link on` on the computer; it prints the MCP URL. FrelyMCP is one address for your whole account: https://mcp.frely.cloud/mcp. In ChatGPT or Claude add a custom connector with that URL, sign in to Frely and approve the client. To check, ask the client to list the top-level names in your workspace.
+
+Related: [FrelyMCP endpoint](https://mcp.frely.cloud/mcp) · [Install page](https://cli.frely.cloud/#install) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I connect Claude Code or Codex?
+
+Source: https://cli.frely.cloud/docs/help/connect-claude-code-or-codex/
+
+# How do I connect Claude Code or Codex?
+
+Claude Code: `claude mcp add --transport http frelymcp "https://mcp.frely.cloud/mcp"`, then open `/mcp` in Claude Code to authorize. Codex: `codex mcp add frelymcp --url "https://mcp.frely.cloud/mcp"`. Both use OAuth, so sign in to Frely and approve the client when asked. Any other MCP client that supports remote HTTP MCP with OAuth can use the same URL.
+
+Related: [FrelyMCP endpoint](https://mcp.frely.cloud/mcp) · [Install page](https://cli.frely.cloud/#install) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## Something does not work. How do I diagnose it?
+
+Source: https://cli.frely.cloud/docs/help/doctor/
+
+# Something does not work. How do I diagnose it?
+
+Run `frely doctor` to check sign-in, installation, the latest version, MCP and service state. Add `-v` for config paths, authorization expiry, last heartbeat and sanitized errors. If the device shows offline, run `frely link on`, which is safe to re-run. If the problem remains, ask in Discord or open a GitHub issue with the `frely doctor -v` output.
+
+Related: [Service maintenance doc](https://github.com/FrelyHQ/frely-cli/blob/main/docs/service-maintenance.md) · [Discord](https://discord.gg/hugMuSveb) · [GitHub issues](https://github.com/FrelyHQ/frely-cli/issues)
+
+## How do I install Frely CLI?
+
+Source: https://cli.frely.cloud/docs/help/how-do-i-install/
+
+# How do I install Frely CLI?
+
+On macOS or Linux run `curl -fsSL https://frely.cloud/start.sh | sh`. On Windows run the PowerShell command shown on the install page. The script installs the latest `frely`, then runs `frely link on`, which opens the browser to sign in (new accounts can register on the same page), asks you to approve the device and prints your MCP URL. Run it again any time to update.
+
+Related: [Install page](https://cli.frely.cloud/#install) · [start.sh](https://frely.cloud/start.sh) · [start.ps1 (Windows)](https://frely.cloud/start.ps1)
+
+## How do I install a Frely Agent, Prompt or Skill?
+
+Source: https://cli.frely.cloud/docs/help/install-agents-and-items/
+
+# How do I install a Frely Agent, Prompt or Skill?
+
+Agent: `frely item install <username/name> --host claude-code --scope global` (hosts: chatgpt, codex, claude-code, pi, generic). Run it with `printf '%s' 'Your task' | frely agent run <username/name> --input-stdin --json`. Marketplace items: `frely item install <username/skill-name> --host claude-code`. Find the name on the creator profile page (`frely.cloud/@<username>`) or in the share link the creator sent you; creator items are not listed in the public Store, which shows only products Frely picks. The first call opens a browser for authorization, and a paid part installs only if your account holds a pass; otherwise the command says how to buy one. Frely never overwrites a folder it did not install or a file you edited.
+
+Related: [Frely App (My Devices)](https://frely.cloud/app/) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I install on a server with no browser?
+
+Source: https://cli.frely.cloud/docs/help/install-on-a-server/
+
+# How do I install on a server with no browser?
+
+Create a one-time install command in the Frely App under My Devices, Add a computer, Create install command, or ask ChatGPT or Claude (connected to FrelyMCP) to add a computer. Paste the command on the server. It looks like `curl -fsSL https://frely.cloud/start.sh | FRELY_INSTALL_TOKEN=fit_... sh`. The token works once, expires after 15 minutes and is not saved. On Linux also run `sudo loginctl enable-linger $USER` so the service stays online after you log out of SSH.
+
+Related: [Frely App (My Devices)](https://frely.cloud/app/) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I install only the program, without the device service?
+
+Source: https://cli.frely.cloud/docs/help/install-only/
+
+# How do I install only the program, without the device service?
+
+Use `https://frely.cloud/install.sh` (macOS and Linux) or `https://frely.cloud/install.ps1` (Windows). They only install `frely`, which suits scripts, Skills and agents. Or run `npm install --global --ignore-scripts frely-cli@latest` (Node.js 22 or newer). The installers check the SHA-256 of the executable and download from GitHub Releases first, then fall back to npmmirror and npmjs.
+
+Related: [install.sh](https://frely.cloud/install.sh) · [install.ps1](https://frely.cloud/install.ps1) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## Is it safe to let an AI use my computer?
+
+Source: https://cli.frely.cloud/docs/help/is-it-safe/
+
+# Is it safe to let an AI use my computer?
+
+Access is limited to the folders you share. File tools reject symlink escapes and cap reads and writes at 1 MiB. Commands run as your OS user inside an OS sandbox: credential folders are unreadable, writes are limited to the workspace and the temp directory, and network goes through a proxy. If the computer cannot sandbox, commands are refused rather than run unsandboxed. The MCP URL contains no secret, and the CLI keeps its execution key encrypted in the OS credential store. You can revoke access any time with `frely link off`; it revokes every client and locks remote control on that computer until you run `frely link on` there.
+
+Related: [How the sandbox protects your data](https://frely.cloud/connect/sandbox/) · [Credential and installation boundaries](https://github.com/FrelyHQ/frely-cli/blob/main/docs/credential-storage.md) · [Security policy](https://github.com/FrelyHQ/frely-cli/blob/main/SECURITY.md) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I let remote AI use an MCP server that runs on my computer?
+
+Source: https://cli.frely.cloud/docs/help/local-mcp-servers/
+
+# How do I let remote AI use an MCP server that runs on my computer?
+
+Frely finds servers that listen only on loopback; list them with `frely link local list`. Add others with `frely link local add <name> --url http://127.0.0.1:<port>/mcp`, or for a stdio server `frely link local add <name> -- <command> [args...]`. Each server stays hidden from remote clients until you turn it on, one by one, on the Frely connections page. Enabled servers run outside the command sandbox with your user account.
+
+Related: [Connections page](https://frely.cloud/user/device) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I sign in or out?
+
+Source: https://cli.frely.cloud/docs/help/login-and-logout/
+
+# How do I sign in or out?
+
+`frely link on` signs in when needed, so you do not need a separate login first. Use `frely login` to sign in on its own (add `--no-browser` on a machine without a browser, or `--email <address>` then `--code <6-digit code>`), and `frely logout` to sign out; logout also revokes the `frely api` authorization. To stop remote control of the computer, use `frely link stop` (pause) or `frely link off` (revoke every client and uninstall the service). `frely link off` also locks remote control on this computer: the Frely web page cannot turn it on again, and only `frely link on` on this computer lifts the lock.
+
+Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md) · [Frely App (My Devices)](https://frely.cloud/app/)
+
+## What happens when a Frely Agent takes a long time?
+
+Source: https://cli.frely.cloud/docs/help/long-agent-tasks/
+
+# What happens when a Frely Agent takes a long time?
+
+`frely agent run` records the run on your computer and a background worker waits for the Agent, so a long task survives a cut-off command. The task keeps running on Frely; reading its state costs nothing. If the command ends before the answer, run `frely agent result --last --wait` (or `frely agent result <runId> --wait`). While the run is going, `frely agent result <runId>` shows its newest progress line when the Agent wrote one. Stop a run with `frely agent cancel <runId>`; the task stops on Frely too and what already ran is charged. A price set by the Agent's creator is charged when the task completes, when you cancel it, or when the Agent already delivered output; a task that fails without output is not charged. To hide progress lines, add `--no-progress-summary` to `frely agent run`, or write `When calling Frely Agents, pass --no-progress-summary.` in the `AGENTS.md` or `CLAUDE.md` your AI reads.
+
+Related: [Install a Frely Agent, Prompt or Skill](./install-agents-and-items.md)
+
+## How do I manage my Frely account (API keys, credits, plans, orders) from the terminal or an AI?
+
+Source: https://cli.frely.cloud/docs/help/manage-account-from-cli/
+
+# How do I manage my Frely account (API keys, credits, plans, orders) from the terminal or an AI?
+
+Use `frely api list` to see operations, `frely api describe <name>` to inspect one, and `frely api call <name> --json '{...}'` to run it. Examples: `frely api call agents.list`, `frely api call usage.summary`. AI clients connected to FrelyMCP reach the same operations through the `frely_list` and `frely_call` tools. The first `frely api` command opens a browser for separate OAuth authorization. The operations are served at https://frely.cloud/mcp.
+
+Related: [frely api doc](https://github.com/FrelyHQ/frely-cli/blob/main/docs/api.md) · [Frely account API endpoint](https://frely.cloud/mcp) · [Frely App (My Devices)](https://frely.cloud/app/)
+
+## What is my MCP URL, and does it change?
+
+Source: https://cli.frely.cloud/docs/help/mcp-url/
+
+# What is my MCP URL, and does it change?
+
+The FrelyMCP address is https://mcp.frely.cloud/mcp for every computer on your account. It never changes and contains no secret; clients hold OAuth tokens. Run `frely link on` to print the URL, or `frely link status` (add `--json` for scripts) to show the URL, the workspace, the authorization expiry and the service state.
+
+Related: [FrelyMCP endpoint](https://mcp.frely.cloud/mcp) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## A command failed because of the sandbox. What can I do?
+
+Source: https://cli.frely.cloud/docs/help/sandbox-and-permissions/
+
+# A command failed because of the sandbox. What can I do?
+
+On the Frely connections page you can open more for a connection: credential folders to read, extra folders to write, or a time-limited run without the sandbox. On Windows, or on Linux without bubblewrap, socat and ripgrep, commands are refused because the computer cannot sandbox; install those tools on Linux. `FRELY_SANDBOX=off` turns the sandbox off on the device only; use it only when you accept the risk.
+
+Related: [How the sandbox protects your data](https://frely.cloud/connect/sandbox/) · [Connections page](https://frely.cloud/user/device) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I share a local model (Ollama, LM Studio, vLLM)?
+
+Source: https://cli.frely.cloud/docs/help/share-local-model/
+
+# How do I share a local model (Ollama, LM Studio, vLLM)?
+
+Run `frely provider share ollama`, or `frely provider share openai-compatible --url http://127.0.0.1:8080/v1 --models model-a,model-b --name "Local GPU"`. This publishes a loopback OpenAI-compatible endpoint as a personal Frely Provider using one empty personal Provider slot. With no empty slot, or with `--creator`, it creates a Creator Provider counted against your Creator plan. Keep the computer online while it is used and make sure the runtime returns usage. If setup stops halfway, run the same command again. `frely provider list` shows your Providers.
+
+Related: [Frely App (My Devices)](https://frely.cloud/app/) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I uninstall Frely CLI?
+
+Source: https://cli.frely.cloud/docs/help/uninstall/
+
+# How do I uninstall Frely CLI?
+
+Run `frely uninstall` in a local terminal (not through Device MCP). It lists everything first and removes it after you type yes (`--yes` for scripts). It revokes this computer's access on the Frely side, removes the service, saved login, device identity, settings, caches and the Agent Skills Frely installed, and last the `frely` program. It keeps the Frely App, your Providers and Agents in your account, the PATH lines the installer added, Skills you edited and marketplace items.
+
+Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md) · [Frely App (My Devices)](https://frely.cloud/app/)
+
+## How do I update Frely CLI?
+
+Source: https://cli.frely.cloud/docs/help/update/
+
+# How do I update Frely CLI?
+
+Run `frely update`. It keeps your login, device, URL and workspace, never downgrades, pauses the background service, replaces the program after checking it and restarts the service. On Windows it prints a PowerShell command to run in a local terminal. Re-running https://frely.cloud/start.sh also updates and restarts the service.
+
+Related: [Self-update doc](https://github.com/FrelyHQ/frely-cli/blob/main/docs/self-update.md) · [start.sh](https://frely.cloud/start.sh)
+
+## What can the AI do on my computer?
+
+Source: https://cli.frely.cloud/docs/help/what-can-the-ai-do/
+
+# What can the AI do on my computer?
+
+Through FrelyMCP the AI can use `list_devices` (your computers and whether each is online), `read` (list, read, search and find files in the workspace), `edit_file` (write whole files or edit lines in one step), `process` (run shell commands or manage long-running processes) and `web_fetch` (read public web pages). Device tools take a `device` argument and run on that computer. The AI client's own shell still runs where the client runs, so ask it to use the Frely tools for work on your computer.
+
+Related: [FrelyMCP endpoint](https://mcp.frely.cloud/mcp) · [Device MCP doc](https://github.com/FrelyHQ/frely-cli/blob/main/docs/device-mcp.md) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## What is Frely CLI?
+
+Source: https://cli.frely.cloud/docs/help/what-is-frely-cli/
+
+# What is Frely CLI?
+
+Frely CLI (the `frely` command) turns a computer you choose into a device that AI agents can work on from anywhere. ChatGPT, Claude, Codex and other MCP clients connect through FrelyMCP and use the files, shell commands and processes in the folders you allow. The computer connects out to Frely, so you open no ports. It is also the command line for your Frely account.
+
+Related: [Home](https://cli.frely.cloud/) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## Which folder does the AI get access to?
+
+Source: https://cli.frely.cloud/docs/help/which-workspace-is-shared/
+
+# Which folder does the AI get access to?
+
+The folder `~/Frely` by default; the installer creates it. Computers set up before this change keep the folder they already share. Set `FRELY_WORKSPACE=/path` before installing to share another folder. Afterwards use `frely link workspace add <path>` to share more folders, `frely link workspace remove <path>` to stop sharing one, and `frely link workspace list` to see them all.
+
+When an AI client needs a folder outside the shared ones, it asks you, and you allow that folder on the web, for a limited time or permanently. Permanent works for one folder, not for your home folder or the folders above it, and needs your passkey or authenticator code. Folders allowed on the web are listed on the device page, where you can remove them at any time. Credential and shell start-up files inside an allowed folder stay protected.
+
+Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md) · [Device MCP doc](https://github.com/FrelyHQ/frely-cli/blob/main/docs/device-mcp.md)
+
 ## Account and sign-in
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/account.md
+Source: https://frely.cloud/docs/faq/account/
 
 # Account and sign-in
 
@@ -109,7 +434,7 @@ Related: [Contact support](https://frely.cloud/support/) · [Privacy Policy](htt
 
 ## Billing, Credit and refunds
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/billing.md
+Source: https://frely.cloud/docs/faq/billing/
 
 # Billing, Credit and refunds
 
@@ -200,7 +525,7 @@ Related: [Privacy Policy](https://frely.cloud/privacy/)
 
 ## Creating and selling on Frely
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/creating.md
+Source: https://frely.cloud/docs/faq/creating/
 
 # Creating and selling on Frely
 
@@ -210,6 +535,13 @@ Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/creating.md
 A Prompt, Skill, Agent or workflow that you have the right to publish. Define its task, inputs, outputs and limits. What you sell is access to the capability, and your core prompts, code and workflows are not handed to buyers.
 
 Related: [Pricing](https://frely.cloud/pricing/) · [Security and data](https://frely.cloud/security/)
+
+## Where does my published item show up?
+<!-- id: where-listed -->
+
+A new Skill, MCP or Agent shows on your profile page (`frely.cloud/@<username>`) and in your library. The public Store lists only products Frely picks, so your item does not appear there unless Frely lists it. Other people reach your item through your profile page, a share link or a pass you give them. Open Visibility on the item to keep it to yourself, show it on your profile page, or show it to the Teams you choose.
+
+Related: [Pricing](https://frely.cloud/pricing/)
 
 ## What is the difference between a hosted Agent and a download-install item?
 <!-- id: hosted-vs-install -->
@@ -236,10 +568,17 @@ Signing in alone does not grant publishing. Check that your plan is active and t
 
 Related: [Terms of Service](https://frely.cloud/terms/)
 
-## Is sales revenue the same as profit or a withdrawable balance?
+## How can my own A2A service show progress to buyers?
+<!-- id: a2a-progress -->
+
+Return an A2A Task in state `working` and put one short sentence in `status.message` (a text part). A2A clients that read the Task see the latest sentence while it runs. Frely charges your per-call price when the Task reaches `completed`, not when the first response arrives.
+
+Related: [Terms of Service](https://frely.cloud/terms/)
+
+## Can I cash out my sales earnings?
 <!-- id: revenue -->
 
-No. Creators must account for model and service running costs, and revenue is not automatically profit or a balance you can withdraw. Settlement follows the service terms.
+Sales earnings are added to your Frely Credit. On basic plans they stay as Credit you can spend on Frely. On commercial plans you can apply to receive eligible sales earnings as a cash payout; each application is reviewed and needs identity checks. Revenue is not the same as profit: you still cover model and service running costs. Settlement follows the service terms.
 
 Related: [Terms of Service](https://frely.cloud/terms/)
 
@@ -252,35 +591,35 @@ Related: [Terms of Service](https://frely.cloud/terms/)
 
 ## Devices and the Frely CLI
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/devices.md
+Source: https://frely.cloud/docs/faq/devices/
 
 # Devices and the Frely CLI
 
 ## How do I install the Frely CLI and link my computer?
 <!-- id: install -->
 
-Run the install script: curl -fsSL https://frely.cloud/install.sh | sh. It installs frely and runs frely mcp start, which opens the browser to sign in (new accounts can register on the same page), asks you to approve the device and prints your MCP URL. Run it again at any time to update.
+Run the install script: curl -fsSL https://frely.cloud/install.sh | sh. It installs frely and runs frely link on, which opens the browser to sign in (new accounts can register on the same page), asks you to approve the device and prints your MCP URL. Run it again at any time to update.
 
 Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
 
 ## My AI app shows no device.
 <!-- id: no-device -->
 
-Run frely mcp start on the computer, and make sure the CLI is signed in to the same Frely account as your AI app.
+Run frely link on on the computer, and make sure the CLI is signed in to the same Frely account as your AI app.
 
 Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
 
 ## A device shows as offline.
 <!-- id: offline -->
 
-Turn the computer on, connect it to the internet and run frely mcp start again. frely doctor shows the account, installation, version, MCP and service state; add -v for details.
+Turn the computer on, connect it to the internet and run frely link on again. frely doctor shows the account, installation, version, MCP and service state; add -v for details.
 
 Console: [My Devices](https://frely.cloud/user/device)
 
 ## Device access expired.
 <!-- id: expired -->
 
-Device MCP access lasts 90 days by default. Run frely mcp start to approve again (frely mcp start --days with a number from 1 to 365 renews early). The MCP URL does not change. You can manage your computers under My Devices on the Frely website.
+Device MCP access lasts 90 days by default. Run frely link on to approve again (frely link on --days with a number from 1 to 365 renews early). The MCP URL does not change. You can manage your computers under My Devices on the Frely website.
 
 Console: [My Devices](https://frely.cloud/user/device)
 
@@ -289,7 +628,7 @@ Console: [My Devices](https://frely.cloud/user/device)
 
 Commands run in a sandbox that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch workspaces you registered. When a task needs more, the app must ask, you decide on the Frely site and how long it lasts, and you can revoke it later. The AI app cannot approve its own request.
 
-Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/)
+Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/) · [How the sandbox protects your data](https://frely.cloud/connect/sandbox/)
 
 ## How do I remove Frely from my computer?
 <!-- id: uninstall -->
@@ -298,7 +637,7 @@ Run frely uninstall in a local terminal. It lists everything first, then removes
 
 ## Privacy and your data
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/privacy-data.md
+Source: https://frely.cloud/docs/faq/privacy-data/
 
 # Privacy and your data
 
@@ -348,7 +687,7 @@ Related: [Contact support](https://frely.cloud/support/) · [Privacy Policy](htt
 
 ## Using models and API keys
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/faq/using-models.md
+Source: https://frely.cloud/docs/faq/using-models/
 
 # Using models and API keys
 
@@ -437,7 +776,7 @@ Related: [Terms of Service](https://frely.cloud/terms/)
 
 ## Use Frely in ChatGPT
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/guides/chatgpt.md
+Source: https://frely.cloud/docs/chatgpt/
 
 # Use Frely in ChatGPT
 
@@ -505,7 +844,7 @@ This route installs the Frely CLI, so ChatGPT needs to run commands on your comp
 
 ## Use Frely in Claude
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/guides/claude.md
+Source: https://frely.cloud/docs/claude/
 
 # Use Frely in Claude
 
@@ -562,11 +901,91 @@ Connect once. Claude signs in to Frely and can then list your models and call pu
 | Sign-in fails or access is denied | Sign in with the same Frely account that owns the API key. Remove the connector and add it again to restart sign-in. |
 | A call reports that an API key is required | Create or enable an API key in your Frely workspace, then try again. |
 
-## FrelyMCP
+## Use Frely with Skill and CLI
 
-Source: https://github.com/FrelyHQ/docs/blob/main/en/guides/frelymcp.md
+Source: https://frely.cloud/docs/cli/
 
-# FrelyMCP
+# Use Frely with Skill and CLI
+
+The Frely CLI is the command line for your Frely account. Its Skill teaches an AI agent that has a shell (Claude Code, Codex, pi and similar) to use that command line: sign in, call your Frely account, install what you bought, and run commands on your own computers. This is the recommended way to use Frely from an AI agent. If your AI app cannot run commands, use the FrelyMCP guide (the alternative) instead.
+
+## Before you start
+<!-- id: before -->
+
+You need a Frely account (sign in at frely.cloud) and an AI agent that can run shell commands on the computer where you install the CLI. The CLI runs on macOS, Linux and Windows.
+
+## Install the CLI
+<!-- id: install -->
+
+Run the command for your system. It installs the `frely` program only.
+
+```sh
+curl -fsSL https://frely.cloud/install.sh | sh
+```
+
+On Windows, run this in PowerShell:
+
+```sh
+curl.exe -fsSLo "$env:TEMP\frely-install.ps1" https://frely.cloud/install.ps1; powershell -NoProfile -ExecutionPolicy Bypass -File "$env:TEMP\frely-install.ps1"
+```
+
+## Sign in
+<!-- id: login -->
+
+Run the command below. It opens your browser so you can sign in or sign up and approve this computer. On a computer without a browser, run `frely login --email` and enter the code sent to your inbox.
+
+```sh
+frely login
+```
+
+## Install the Skill
+<!-- id: skill -->
+
+Install the `frely` Skill into your AI agent. Replace `<host>` with `claude-code`, `codex`, `pi`, `chatgpt` or `generic`. Restart the agent session afterwards so it finds the Skill.
+
+```sh
+frely skill install --host <host>
+```
+
+## Ask your agent
+<!-- id: use -->
+
+Tell your agent what you want in plain words, for example: "List my Frely computers", "Run the tests on my office computer", or "Install the Skill I bought on Frely". The agent runs `frely` commands for you. The first time it controls a computer, Frely asks you to approve on the Frely site with a short code. The agent cannot approve its own request.
+
+## Make a computer controllable
+<!-- id: device -->
+
+To let your agent work on another computer, run this on that computer. It signs in, approves the computer and starts the background service. For a server without a browser, create a one-time install command in the Frely app under My Devices.
+
+```sh
+frely link on
+```
+
+## Commands your agent uses
+<!-- id: commands -->
+
+| Command | What it does |
+| --- | --- |
+| `frely devices` | Lists your computers and whether they are online. |
+| `frely run <device> -- <command>` | Runs a command on a computer. |
+| `frely read <device>:<path>` | Reads a file or folder on a computer. |
+| `frely edit <device>:<path> --from <file>` | Writes a file on a computer. |
+| `frely item install <username/name> --host <host>` | Installs a Skill, Prompt or Agent from Frely. |
+| `frely api list` | Lists the account tools your agent can call. |
+| `frely doctor` | Checks sign-in, installation and connection. |
+
+## If something does not work
+<!-- id: help -->
+
+If the agent does not use Frely, restart the agent session and check that `frely skill install` finished. If `frely` is not found, open a new terminal and run it again. If a computer shows as offline, run `frely link on` on it. If a command asks for approval, open the link it prints and confirm on the Frely site. Other questions: support@frely.cloud.
+
+## FrelyMCP (alternative)
+
+Source: https://frely.cloud/docs/frelymcp/
+
+# FrelyMCP (alternative)
+
+The recommended way to use Frely from an AI agent is the Use Frely with Skill and CLI guide. Choose FrelyMCP instead when your AI app cannot run shell commands, for example ChatGPT or Claude in the browser. It connects with a URL and OAuth.
 
 FrelyMCP is the MCP server for your Frely account. Connect it once and your AI app can reach your own computers, the cloud tools you turned on, and your models and AI agents. You sign in with OAuth; no API key is pasted into the app.
 
@@ -578,12 +997,12 @@ Local: list the computers linked to your account, read files in a workspace, edi
 ## Before you start
 <!-- id: before -->
 
-You need a Frely account (sign in at frely.cloud). To use the device tools, install the Frely CLI on the computer and link it. Models, agents and cloud tools work without a device.
+You need a Frely account (sign in at frely.cloud). To use the device tools, install the Frely CLI on the computer and link it, as described in the Use Frely with Skill and CLI guide. Models, agents and cloud tools work without a device.
 
 ```sh
 curl -fsSL https://frely.cloud/install.sh | sh
 frely login
-frely mcp start
+frely link on
 ```
 
 ## Connect your AI app
@@ -604,6 +1023,11 @@ In Claude, open Settings, go to Connectors, choose Add custom connector, enter F
 <!-- id: chatgpt -->
 
 In ChatGPT, open Settings and go to the section for apps and connectors. Create a new connector, paste the address above, choose OAuth and sign in to Frely. Custom connectors can require developer mode, depending on your ChatGPT plan.
+
+## Codex
+<!-- id: codex -->
+
+Run: codex mcp add frelymcp --url https://mcp.frely.cloud/mcp. Codex starts the OAuth sign-in: sign in to Frely and approve access. Do not add a token or an authorization header.
 
 ## Install with a config file
 <!-- id: config -->
@@ -637,12 +1061,12 @@ The tools your AI app can call:
 | `<mcp>__<tool>` | Tools of the cloud MCP servers you turned on for this connection. They run in the cloud and need no device. |
 | `local_mcp_list / local_mcp_call` | Reaches MCP servers running on a device, when the device exposes any. |
 | `frely_list / frely_call` | Manages your Frely account: API keys, credits, plans, orders and Creator items. They run in the cloud and need no device. A new connection may only read until you allow more on the Frely site; actions that move money or change credentials need your approval each time, and payments open a payment page. |
-| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. |
+| `store` | Shows the Frely Store (subscriptions, plans, Credit, extensions, official Skills, services) as a card, or a table in apps without cards. Each Buy link opens that product on the Frely site, where you pay. Items that creators publish are on their profile pages, not in the Store. |
 
 ## Safety and approval
 <!-- id: safety -->
 
-Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request.
+Commands run in a sandbox on your computer that blocks credential folders such as ~/.ssh and ~/.aws, and tools only touch the workspaces you registered. When a task needs more, the AI app must ask with request_permission. You decide on the Frely site, choose how long it lasts, and can revoke it later. The AI app cannot approve its own request. See [how the sandbox protects your data](https://frely.cloud/connect/sandbox/).
 
 ## Your data
 <!-- id: data -->
@@ -652,4 +1076,4 @@ Device tool calls (read, edit_file, process, web_fetch and local MCP) are relaye
 ## If something does not work
 <!-- id: help -->
 
-If list_devices shows no device, run frely mcp start on the computer and check that the CLI is signed in to the same Frely account. If a device is offline, turn the computer on and run the same command. Other questions: support@frely.cloud.
+If list_devices shows no device, run frely link on on the computer and check that the CLI is signed in to the same Frely account. If a device is offline, turn the computer on and run the same command. Other questions: support@frely.cloud.
