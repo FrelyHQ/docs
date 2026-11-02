@@ -44,7 +44,7 @@ On the server, the boundary is "the system user Frely runs as, plus the sandbox"
 
 1. **Install as a dedicated user, not root.** For example, create `frely-ops` and give it access to your app folder only. The sandbox limits writes, not what the user can read, so the smaller the user's rights, the better. To read system logs without root, add the user to the `adm` and `systemd-journal` groups.
 2. **Check the sandbox works.** On Linux, install `bubblewrap`, `socat` and `ripgrep`; `frely doctor` tells you whether the sandbox is available. Older systems such as CentOS 7 cannot run it; there, approve "run without the sandbox" for a limited time instead of leaving it open.
-3. **Share only the folder you need.** Set `FRELY_WORKSPACE=/srv/myapp` instead of sharing the whole home folder, and keep the device authorization short.
+3. **Share only the folder you need.** Set `FRELY_WORKSPACE=/srv/myapp` instead of the default `~/Frely` folder, and keep the device authorization short.
 4. **Know what the docker group means.** A user in the `docker` group can read `docker logs` directly, which is handy, but that membership is as powerful as root.
 
 ## When ssh is still fine
