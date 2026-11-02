@@ -23,7 +23,7 @@ Frely アカウントが必要です(frely.cloud でサインインしてくだ�
 ```sh
 curl -fsSL https://frely.cloud/install.sh | sh
 frely login
-frely mcp start
+frely link on
 ```
 
 ## AI アプリを接続する
@@ -92,4 +92,4 @@ AI アプリから呼び出せるツール：
 ## うまく動かないとき
 <!-- id: help -->
 
-list_devices でデバイスが表示されない場合は、コンピューター上で frely mcp start を実行し、CLI が同じ Frely アカウントでサインインしているか確認してください。デバイスがオフラインの場合は、コンピューターの電源を入れて同じコマンドを実行してください。その他のご質問は support@frely.cloud まで。
+list_devices でデバイスが表示されない場合は、コンピューター上で frely link on を実行し、CLI が同じ Frely アカウントでサインインしているか確認してください。デバイスがオフラインの場合は、コンピューターの電源を入れて同じコマンドを実行してください。その他のご質問は support@frely.cloud まで。

@@ -11,28 +11,28 @@ order: 4
 ## Como instalo a Frely CLI e asocio o meu computador?
 <!-- id: install -->
 
-Execute o script de instalação: curl -fsSL https://frely.cloud/install.sh | sh. O script instala o frely e executa frely mcp start, que abre o navegador para iniciar sessão (as novas contas podem registar-se na mesma página), pede-lhe que autorize o dispositivo e mostra o seu URL MCP. Volte a executá-lo em qualquer altura para atualizar.
+Execute o script de instalação: curl -fsSL https://frely.cloud/install.sh | sh. O script instala o frely e executa frely link on, que abre o navegador para iniciar sessão (as novas contas podem registar-se na mesma página), pede-lhe que autorize o dispositivo e mostra o seu URL MCP. Volte a executá-lo em qualquer altura para atualizar.
 
 Related: [Guia do FrelyMCP](https://frely.cloud/docs/frelymcp/)
 
 ## A minha aplicação de IA não mostra nenhum dispositivo.
 <!-- id: no-device -->
 
-Execute frely mcp start no computador e certifique-se de que a CLI tem sessão iniciada na mesma conta Frely que a sua aplicação de IA.
+Execute frely link on no computador e certifique-se de que a CLI tem sessão iniciada na mesma conta Frely que a sua aplicação de IA.
 
 Related: [Guia do FrelyMCP](https://frely.cloud/docs/frelymcp/)
 
 ## Um dispositivo aparece como offline.
 <!-- id: offline -->
 
-Ligue o computador, ligue-o à internet e execute frely mcp start novamente. O frely doctor mostra o estado da conta, da instalação, da versão, do MCP e do serviço; acrescente -v para mais detalhes.
+Ligue o computador, ligue-o à internet e execute frely link on novamente. O frely doctor mostra o estado da conta, da instalação, da versão, do MCP e do serviço; acrescente -v para mais detalhes.
 
 Console: [My Devices (Os meus dispositivos)](https://frely.cloud/user/device)
 
 ## O acesso do dispositivo expirou.
 <!-- id: expired -->
 
-O acesso MCP do dispositivo dura 90 dias por predefinição. Execute frely mcp start para autorizar novamente (frely mcp start --days com um número de 1 a 365 renova antecipadamente). O URL MCP não muda. Pode gerir os seus computadores em My Devices no site da Frely.
+O acesso MCP do dispositivo dura 90 dias por predefinição. Execute frely link on para autorizar novamente (frely link on --days com um número de 1 a 365 renova antecipadamente). O URL MCP não muda. Pode gerir os seus computadores em My Devices no site da Frely.
 
 Console: [My Devices](https://frely.cloud/user/device)
 

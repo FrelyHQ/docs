@@ -11,28 +11,28 @@ order: 4
 ## 如何安裝 Frely CLI 並連結我的電腦？
 <!-- id: install -->
 
-執行安裝腳本：curl -fsSL https://frely.cloud/install.sh | sh。它會安裝 frely 並執行 frely mcp start，過程會開啟瀏覽器讓你登入（新帳戶可在同一頁面註冊）、要求你批准該裝置，並顯示你的 MCP URL。你可隨時再次執行以進行更新。
+執行安裝腳本：curl -fsSL https://frely.cloud/install.sh | sh。它會安裝 frely 並執行 frely link on，過程會開啟瀏覽器讓你登入（新帳戶可在同一頁面註冊）、要求你批准該裝置，並顯示你的 MCP URL。你可隨時再次執行以進行更新。
 
 Related: [FrelyMCP 指南](https://frely.cloud/docs/frelymcp/)
 
 ## 我的 AI 應用程式沒有顯示任何裝置。
 <!-- id: no-device -->
 
-在該電腦上執行 frely mcp start，並確保 CLI 所登入的 Frely 帳戶與你的 AI 應用程式相同。
+在該電腦上執行 frely link on，並確保 CLI 所登入的 Frely 帳戶與你的 AI 應用程式相同。
 
 Related: [FrelyMCP 指南](https://frely.cloud/docs/frelymcp/)
 
 ## 裝置顯示為離線。
 <!-- id: offline -->
 
-開啟電腦、連接互聯網，然後再次執行 frely mcp start。frely doctor 會顯示帳戶、安裝、版本、MCP 及服務的狀態；加入 -v 可查看詳細資料。
+開啟電腦、連接互聯網，然後再次執行 frely link on。frely doctor 會顯示帳戶、安裝、版本、MCP 及服務的狀態；加入 -v 可查看詳細資料。
 
 Console: [My Devices（我的裝置）](https://frely.cloud/user/device)
 
 ## 裝置存取權已過期。
 <!-- id: expired -->
 
-裝置的 MCP 存取權預設有效期為 90 天。執行 frely mcp start 再次批准（frely mcp start --days 加上 1 至 365 之間的數字可提早續期）。MCP URL 不會改變。你可以在 Frely 網站的 My Devices 下管理你的電腦。
+裝置的 MCP 存取權預設有效期為 90 天。執行 frely link on 再次批准（frely link on --days 加上 1 至 365 之間的數字可提早續期）。MCP URL 不會改變。你可以在 Frely 網站的 My Devices 下管理你的電腦。
 
 Console: [My Devices](https://frely.cloud/user/device)
 

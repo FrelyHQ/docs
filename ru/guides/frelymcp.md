@@ -23,7 +23,7 @@ FrelyMCP — это MCP-сервер для вашего аккаунта Frely.
 ```sh
 curl -fsSL https://frely.cloud/install.sh | sh
 frely login
-frely mcp start
+frely link on
 ```
 
 ## Подключите своё AI-приложение
@@ -92,4 +92,4 @@ https://mcp.frely.cloud/mcp
 ## Если что-то не работает
 <!-- id: help -->
 
-Если list_devices не показывает ни одного устройства, выполните frely mcp start на компьютере и убедитесь, что в CLI выполнен вход в тот же аккаунт Frely. Если устройство не в сети, включите компьютер и выполните ту же команду. Другие вопросы: support@frely.cloud.
+Если list_devices не показывает ни одного устройства, выполните frely link on на компьютере и убедитесь, что в CLI выполнен вход в тот же аккаунт Frely. Если устройство не в сети, включите компьютер и выполните ту же команду. Другие вопросы: support@frely.cloud.
