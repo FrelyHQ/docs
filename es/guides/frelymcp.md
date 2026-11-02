@@ -23,7 +23,7 @@ Necesitas una cuenta de Frely (inicia sesión en frely.cloud). Para usar las her
 ```sh
 curl -fsSL https://frely.cloud/install.sh | sh
 frely login
-frely mcp start
+frely link on
 ```
 
 ## Conecta tu app de IA
@@ -92,4 +92,4 @@ Las llamadas a las herramientas del dispositivo (read, edit_file, process, web_f
 ## Si algo no funciona
 <!-- id: help -->
 
-Si list_devices no muestra ningún dispositivo, ejecuta frely mcp start en la computadora y verifica que el CLI haya iniciado sesión en la misma cuenta de Frely. Si un dispositivo está fuera de línea, enciende la computadora y ejecuta el mismo comando. Otras preguntas: support@frely.cloud.
+Si list_devices no muestra ningún dispositivo, ejecuta frely link on en la computadora y verifica que el CLI haya iniciado sesión en la misma cuenta de Frely. Si un dispositivo está fuera de línea, enciende la computadora y ejecuta el mismo comando. Otras preguntas: support@frely.cloud.
