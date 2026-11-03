@@ -23,7 +23,7 @@
 - [How do I manage my Frely account (API keys, credits, plans, orders) from the terminal or an AI?](https://cli.frely.cloud/docs/help/manage-account-from-cli/): Manage API keys, credits, plans and orders with frely api.
 - [What is my MCP URL, and does it change?](https://cli.frely.cloud/docs/help/mcp-url/): The FrelyMCP address, and how to print it.
 - [A command failed because of the sandbox. What can I do?](https://cli.frely.cloud/docs/help/sandbox-and-permissions/): What to do when the sandbox blocks a command.
-- [How do I share a local model (Ollama, LM Studio, vLLM)?](https://cli.frely.cloud/docs/help/share-local-model/): Share a local model as a Frely Provider.
+- [How do I share a local model (Ollama, LM Studio, vLLM)?](https://cli.frely.cloud/docs/help/share-local-model/): Share a local model and get an AccessPoint for it.
 - [How do I uninstall Frely CLI?](https://cli.frely.cloud/docs/help/uninstall/): Remove Frely CLI and what it keeps.
 - [How do I update Frely CLI?](https://cli.frely.cloud/docs/help/update/): Update Frely CLI and keep your login, device and workspace.
 - [What can the AI do on my computer?](https://cli.frely.cloud/docs/help/what-can-the-ai-do/): The tools an AI client can use on your computer.
