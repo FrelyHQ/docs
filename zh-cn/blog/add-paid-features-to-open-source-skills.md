@@ -19,7 +19,7 @@ Frely 提供一条中间路线：**开源部分照旧免费公开，进阶部分
 - **付费文件**可以是具体文件，也可以是整个文件夹，例如 `scripts/` 或 `reference/advanced.md`。
 - **每种时长各定一个价格**：1 小时、8 小时、24 小时、7 天、30 天、永久，任选一到六种。
 
-买家用一条命令安装：`frely item install <item-id>`。ChatGPT、Codex、Claude Code 等支持 Skill 的工具都能用。通行证有效期内，安装时会一并取得付费文件；过期后，安装不再取得付费部分。`永久`通行证让买家永久保留本地副本，并包含之后的更新。
+买家用一条命令安装：`frely item install <username/skill-name>`，例如 `frely item install ada/review`。ChatGPT、Codex、Claude Code 等支持 Skill 的工具都能用。通行证有效期内，安装时会一并取得付费文件；过期后，安装不再取得付费部分。`永久`通行证让买家永久保留本地副本，并包含之后的更新。
 
 ## 一句话发布
 
