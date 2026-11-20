@@ -50,7 +50,7 @@ name: Claude
 3. 代わりに1つのモデルをSkillとして追加するには、Frely CLIをインストールし、frely login を実行してから、モデルをインストールします：
 
    ```sh
-   frely agent install <model-link> --host claude-code
+   frely item install <model-link> --host claude-code
    ```
 
 ## うまく動作しないときは

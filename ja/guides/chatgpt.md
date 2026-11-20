@@ -59,7 +59,7 @@ name: ChatGPT
 3. モデルを ChatGPT の Skill としてインストールします。モデルのインストール手順に記載されているモデルリンクを使用します：
 
    ```sh
-   frely agent install <model-link> --host chatgpt
+   frely item install <model-link> --host chatgpt
    ```
 
 ## うまく動作しないときは

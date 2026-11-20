@@ -50,7 +50,7 @@ Ligue uma única vez. O Claude inicia sessão no Frely e pode depois listar os s
 3. Para adicionar um modelo como Skill em alternativa, instale o Frely CLI, execute frely login e instale o modelo:
 
    ```sh
-   frely agent install <model-link> --host claude-code
+   frely item install <model-link> --host claude-code
    ```
 
 ## Se algo não funcionar

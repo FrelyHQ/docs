@@ -50,7 +50,7 @@ name: Claude
 3. 如想改為將單一模型新增為 Skill，請安裝 Frely CLI、執行 frely login，然後安裝該模型：
 
    ```sh
-   frely agent install <model-link> --host claude-code
+   frely item install <model-link> --host claude-code
    ```
 
 ## 如果無法正常運作

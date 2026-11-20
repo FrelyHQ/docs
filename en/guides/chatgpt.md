@@ -59,7 +59,7 @@ This route installs the Frely CLI, so ChatGPT needs to run commands on your comp
 3. Install the model as a ChatGPT Skill. Use the model link from its install instructions:
 
    ```sh
-   frely agent install <model-link> --host chatgpt
+   frely item install <model-link> --host chatgpt
    ```
 
 ## If something does not work

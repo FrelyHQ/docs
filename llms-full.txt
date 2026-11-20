@@ -179,7 +179,7 @@ Source: https://cli.frely.cloud/docs/help/commands/
 
 # Which commands does the CLI have?
 
-Main ones: `frely link on|status|stop|off|auto-update`, `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely agent install|run|result|runs|cancel|status|remove`, `frely item install|update|trust`, `frely service share model`, `frely provider add|list|remove|key`, `frely task add|start|result|schedule` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
+Main ones: `frely link on|status|stop|off|auto-update`, `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely item install|update|trust|call|status|remove`, `frely runs|result|cancel`, `frely service share|add|start|list|stop|remove`, `frely provider add|list|remove|key`, `frely task add|start|schedule` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
 
@@ -289,7 +289,7 @@ Source: https://cli.frely.cloud/docs/help/long-agent-tasks/
 
 # What happens when a Frely Agent takes a long time?
 
-`frely item call` records the run on your computer and a background worker waits for the Agent, so a long task survives a cut-off command. The task keeps running on Frely; reading its state costs nothing. If the command ends before the answer, run `frely item result --last --wait` (or `frely item result <runId> --wait`). While the run is going, `frely item result <runId>` shows its newest progress line when the Agent wrote one. Stop a run with `frely item cancel <runId>`; the task stops on Frely too and what already ran is charged. A price set by the Agent's creator is charged when the task completes, when you cancel it, or when the Agent already delivered output; a task that fails without output is not charged. To hide progress lines, add `--no-progress-summary` to `frely item call`, or write `When calling Frely Agents, pass --no-progress-summary.` in the `AGENTS.md` or `CLAUDE.md` your AI reads.
+`frely item call` records the run on your computer and a background worker waits for the Agent, so a long task survives a cut-off command. The task keeps running on Frely; reading its state costs nothing. If the command ends before the answer, run `frely result --last --wait` (or `frely result <runId> --wait`). While the run is going, `frely result <runId>` shows its newest progress line when the Agent wrote one. Stop a run with `frely cancel <runId>`; the task stops on Frely too and what already ran is charged. A price set by the Agent's creator is charged when the task completes, when you cancel it, or when the Agent already delivered output; a task that fails without output is not charged. To hide progress lines, add `--no-progress-summary` to `frely item call`, or write `When calling Frely Agents, pass --no-progress-summary.` in the `AGENTS.md` or `CLAUDE.md` your AI reads.
 
 Related: [Install a Frely Agent, Prompt or Skill](./install-agents-and-items.md)
 
@@ -836,7 +836,7 @@ This route installs the Frely CLI, so ChatGPT needs to run commands on your comp
 3. Install the model as a ChatGPT Skill. Use the model link from its install instructions:
 
    ```sh
-   frely agent install <model-link> --host chatgpt
+   frely item install <model-link> --host chatgpt
    ```
 
 ## If something does not work
@@ -895,7 +895,7 @@ Connect once. Claude signs in to Frely and can then list your models and call pu
 3. To add one model as a Skill instead, install the Frely CLI, run frely login, and install the model:
 
    ```sh
-   frely agent install <model-link> --host claude-code
+   frely item install <model-link> --host claude-code
    ```
 
 ## If something does not work
