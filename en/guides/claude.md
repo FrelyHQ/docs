@@ -50,7 +50,7 @@ Connect once. Claude signs in to Frely and can then list your models and call pu
 3. To add one model as a Skill instead, install the Frely CLI, run frely login, and install the model:
 
    ```sh
-   frely agent install <model-link> --host claude-code
+   frely item install <model-link> --host claude-code
    ```
 
 ## If something does not work

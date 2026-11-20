@@ -59,7 +59,7 @@ Este método instala a Frely CLI, pelo que o ChatGPT precisa de executar comando
 3. Instale o modelo como um Skill do ChatGPT. Utilize a ligação do modelo indicada nas respetivas instruções de instalação:
 
    ```sh
-   frely agent install <model-link> --host chatgpt
+   frely item install <model-link> --host chatgpt
    ```
 
 ## Se algo não funcionar

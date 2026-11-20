@@ -50,7 +50,7 @@ name: Claude
 3. Чтобы вместо этого добавить одну модель как Skill, установите Frely CLI, выполните frely login и установите модель:
 
    ```sh
-   frely agent install <model-link> --host claude-code
+   frely item install <model-link> --host claude-code
    ```
 
 ## Если что-то не работает
