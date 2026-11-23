@@ -179,7 +179,7 @@ Source: https://cli.frely.cloud/docs/help/commands/
 
 # Which commands does the CLI have?
 
-Main ones: `frely link on|status|stop|off|auto-update`, `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely item install|update|trust|call|status|remove`, `frely runs|result|cancel`, `frely service share|add|start|list|stop|remove`, `frely provider add|list|remove|key`, `frely task add|start|schedule` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
+Main ones: `frely link on|status|stop|off|auto-update`, `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely item install|update|publish|trust|call|status|remove`, `frely runs|result|cancel`, `frely service share|add|start|list|stop|remove`, `frely provider add|list|remove|key`, `frely task add|start|schedule` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
 
@@ -312,6 +312,18 @@ Source: https://cli.frely.cloud/docs/help/mcp-url/
 The FrelyMCP address is https://mcp.frely.cloud/mcp for every computer on your account. It never changes and contains no secret; clients hold OAuth tokens. Run `frely link on` to print the URL, or `frely link status` (add `--json` for scripts) to show the URL, the workspace, the authorization expiry and the service state.
 
 Related: [FrelyMCP endpoint](https://mcp.frely.cloud/mcp) · [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
+
+## How do I publish a Skill I wrote to Frely?
+
+Source: https://cli.frely.cloud/docs/help/publish-a-skill/
+
+# How do I publish a Skill I wrote to Frely?
+
+Run `frely item publish <folder>` in a terminal where you are signed in (`frely login`). The folder holds `SKILL.md` with `name` and `description` in its frontmatter. The command packs the folder, uploads it as a new version of the item `<your-username>/<slug>` and prints the version and the install command `frely item install <your-username>/<slug>`. The slug defaults to the `name` in `SKILL.md`; `--slug <slug>` sets another one (1-40 lowercase letters, digits or hyphens). Publishing the same slug again adds a new version, and an installed copy updates with `frely item update <folder>`.
+
+Left out of the package: files and folders whose name starts with `.`, `skills-config` and `node_modules`. A symbolic link stops the command. The command checks the free-tier limits before it uploads: at most 64 files, 64 KB per file and 128 KB in total. `--premium <path>` marks a file, or a folder when the path ends in `/`, that only buyers with a pass receive; `SKILL.md` is always free. Publishing needs a Creator plan with a free published slot and Frely scans the new version. Anyone who installs the Skill can read its free files, so keep secrets out of the folder.
+
+Related: [Install a Frely Agent, Prompt or Skill](./install-agents-and-items.md) · [Commands](./commands.md)
 
 ## A command failed because of the sandbox. What can I do?
 
