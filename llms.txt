@@ -36,6 +36,7 @@
 - [Devices and the Frely CLI](https://frely.cloud/docs/faq/devices/): Answers about devices and the Frely CLI: installing the CLI, linking a computer to your account, keeping it working, and removing it.
 - [Privacy and your data](https://frely.cloud/docs/faq/privacy-data/): Answers about privacy on Frely: what data Frely stores, for how long, and how to control analytics.
 - [Using models and API keys](https://frely.cloud/docs/faq/using-models/): Answers about using models on Frely: API keys, client settings, usage, and what to do when a request fails.
+- [Charging for a website with points](https://frely.cloud/docs/faq/website-points/): How a website sells points through Frely and spends them per use: sign-in, checkout by email, and the four Apps API calls.
 - [Use Frely in ChatGPT](https://frely.cloud/docs/chatgpt/): Add Frely to ChatGPT as a connector, then call your Frely models from a chat.
 - [Use Frely in Claude](https://frely.cloud/docs/claude/): Add Frely to Claude as a custom connector, or to Claude Code as an MCP server.
 - [Use Frely with Skill and CLI](https://frely.cloud/docs/cli/): Install the Frely CLI and its Skill so your AI agent can use your Frely account and control your own computers from a terminal.
