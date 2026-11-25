@@ -2,7 +2,7 @@
 title: Skill과 CLI로 Frely 사용하기
 description: Frely CLI와 그 Skill을 설치하여 AI 에이전트가 Frely 계정을 사용하고 터미널에서 내 컴퓨터를 제어할 수 있도록 하세요.
 applies_to: any
-updated: 2026-11-02
+updated: 2026-11-25
 order: 0
 ---
 
@@ -42,10 +42,10 @@ frely login
 ## Skill 설치하기
 <!-- id: skill -->
 
-`frely` Skill을 AI 에이전트에 설치하세요. `<host>`는 `claude-code`, `codex`, `pi`, `chatgpt` 또는 `generic`으로 바꿔 입력하세요. 설치 후에는 에이전트가 Skill을 인식하도록 에이전트 세션을 다시 시작하세요.
+`frely` Skill을 AI 에이전트에 설치하세요. `<host>`는 `claude-code`, `codex` 또는 `pi`로 바꿔 입력하세요. 설치 후에는 에이전트가 Skill을 인식하도록 에이전트 세션을 다시 시작하세요.
 
 ```sh
-frely skill install --host <host>
+frely agent setup <host>
 ```
 
 ## 에이전트에게 요청하기
@@ -67,10 +67,10 @@ frely link on
 
 | 명령 | 설명 |
 | --- | --- |
-| `frely devices` | 내 컴퓨터와 온라인 여부를 표시합니다. |
-| `frely run <device> -- <command>` | 컴퓨터에서 명령을 실행합니다. |
-| `frely read <device>:<path>` | 컴퓨터의 파일이나 폴더를 읽습니다. |
-| `frely edit <device>:<path> --from <file>` | 컴퓨터에 파일을 작성합니다. |
+| `frely device list` | 내 컴퓨터와 온라인 여부를 표시합니다. |
+| `frely device run <device> -- <command>` | 컴퓨터에서 명령을 실행합니다. |
+| `frely device read <device>:<path>` | 컴퓨터의 파일이나 폴더를 읽습니다. |
+| `frely device edit <device>:<path> --from <file>` | 컴퓨터에 파일을 작성합니다. |
 | `frely item install <username/name> --host <host>` | Frely에서 Skill, Prompt 또는 Agent를 설치합니다. |
 | `frely api list` | 에이전트가 호출할 수 있는 계정 도구를 표시합니다. |
 | `frely doctor` | 로그인, 설치, 연결 상태를 점검합니다. |
@@ -78,4 +78,4 @@ frely link on
 ## 문제가 발생하면
 <!-- id: help -->
 
-에이전트가 Frely를 사용하지 않는다면 에이전트 세션을 다시 시작하고 `frely skill install`이 완료되었는지 확인하세요. `frely`를 찾을 수 없다면 새 터미널을 열고 다시 실행하세요. 컴퓨터가 오프라인으로 표시되면 그 컴퓨터에서 `frely link on`을 실행하세요. 명령이 승인을 요청하면 출력된 링크를 열어 Frely 사이트에서 확인하세요. 그 외 문의: support@frely.cloud.
+에이전트가 Frely를 사용하지 않는다면 에이전트 세션을 다시 시작하고 `frely agent setup`이 완료되었는지 확인하세요. `frely`를 찾을 수 없다면 새 터미널을 열고 다시 실행하세요. 컴퓨터가 오프라인으로 표시되면 그 컴퓨터에서 `frely link on`을 실행하세요. 명령이 승인을 요청하면 출력된 링크를 열어 Frely 사이트에서 확인하세요. 그 외 문의: support@frely.cloud.

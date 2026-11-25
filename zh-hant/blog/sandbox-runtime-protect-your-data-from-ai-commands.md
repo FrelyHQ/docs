@@ -4,7 +4,7 @@ description: 淺白解釋 Anthropic 的開源沙盒執行環境（srt）：它�
 date: 2026-10-28
 draft: false
 applies_to: any
-updated: 2026-10-28
+updated: 2026-11-25
 ---
 
 讓 AI 在你的電腦上執行 shell 指令很有用。它可以安裝依賴套件、執行測試、讀取日誌、修復 build。但這也意味著：一個不是你寫的程式，受著你沒有審閱過的文字驅動，以你的用戶帳戶執行。
@@ -77,7 +77,7 @@ Frely CLI 允許一般指令進行這類寫入，然後再作檢查。它會在�
 
 ### 從沙盒之內連接網絡
 
-由於 srt 只為 HTTP、HTTPS 和 SOCKS 流量提供路由，像 `ssh` 這類工具需要協助。CLI 會將 `ssh`、`scp` 和 `sftp` 經沙盒的代理伺服器傳送。至於資料庫用戶端和其他原始 TCP 工具，內置的 `frely tunnel` 會在沙盒之內開啟一個本機連接埠。如果你經本機代理伺服器（例如 Clash）連上互聯網，`frely sandbox proxy` 可以讓沙盒使用它。Frely 只會讀取你的代理設定，不會更改它們。
+由於 srt 只為 HTTP、HTTPS 和 SOCKS 流量提供路由，像 `ssh` 這類工具需要協助。CLI 會將 `ssh`、`scp` 和 `sftp` 經沙盒的代理伺服器傳送。至於資料庫用戶端和其他原始 TCP 工具，內置的 `frely link tunnel` 會在沙盒之內開啟一個本機連接埠。如果你經本機代理伺服器（例如 Clash）連上互聯網，`frely link proxy` 可以讓沙盒使用它。Frely 只會讀取你的代理設定，不會更改它們。
 
 ### Frely CLI 對 srt 的使用未涵蓋之處
 

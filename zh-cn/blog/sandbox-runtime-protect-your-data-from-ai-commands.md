@@ -4,7 +4,7 @@ description: 通俗解释 Anthropic 的开源沙箱运行时（srt）：它如�
 date: 2026-10-28
 draft: false
 applies_to: any
-updated: 2026-10-28
+updated: 2026-11-25
 ---
 
 让 AI 在你的电脑上运行 shell 命令很有用。它可以安装依赖、运行测试、读取日志、修复构建。但这也意味着，一个你并未编写的程序，在由你未曾审阅的文本驱使下，以你的用户账户运行。
@@ -77,7 +77,7 @@ Frely CLI 对普通命令允许这些写入，然后进行检查。它会在命�
 
 ### 沙箱内部的网络访问
 
-由于 srt 只转发 HTTP、HTTPS 和 SOCKS 流量，像 `ssh` 这样的工具需要额外帮助。CLI 会将 `ssh`、`scp` 和 `sftp` 经由沙箱的代理转发。对于数据库客户端和其他原始 TCP 工具，内置的 `frely tunnel` 会在沙箱内打开一个本地端口。如果你通过本地代理（例如 Clash）访问互联网，`frely sandbox proxy` 可以让沙箱使用它。Frely 只读取你的代理设置；它不会更改它们。
+由于 srt 只转发 HTTP、HTTPS 和 SOCKS 流量，像 `ssh` 这样的工具需要额外帮助。CLI 会将 `ssh`、`scp` 和 `sftp` 经由沙箱的代理转发。对于数据库客户端和其他原始 TCP 工具，内置的 `frely link tunnel` 会在沙箱内打开一个本地端口。如果你通过本地代理（例如 Clash）访问互联网，`frely link proxy` 可以让沙箱使用它。Frely 只读取你的代理设置；它不会更改它们。
 
 ### Frely CLI 对 srt 的使用未覆盖之处
 

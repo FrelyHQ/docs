@@ -2,7 +2,7 @@
 title: 设备与 Frely CLI
 description: 安装 CLI、关联电脑、保持可用以及移除。
 applies_to: any
-updated: 2026-10-21
+updated: 2026-11-25
 order: 4
 ---
 
@@ -46,4 +46,4 @@ Related: [FrelyMCP 指南](https://frely.cloud/docs/frelymcp/) · [How the sandb
 ## 如何从电脑上移除 Frely？
 <!-- id: uninstall -->
 
-在本地终端运行 frely uninstall。它会先列出所有将删除的内容，在你输入 yes 后执行删除。它会吊销这台电脑的访问，移除服务、保存的登录、设备身份、设置和缓存，最后删除 frely 程序。你的 Provider 和 Agent 保留在你的账户中。
+在本地终端运行 frely self uninstall。它会先列出所有将删除的内容，在你输入 yes 后执行删除。它会吊销这台电脑的访问，移除服务、保存的登录、设备身份、设置和缓存，最后删除 frely 程序。你的 Provider 和 Agent 保留在你的账户中。

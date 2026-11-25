@@ -134,7 +134,7 @@ Frely CLI allows those writes for ordinary commands, then checks. It takes a cop
 
 ### Networking from inside the sandbox
 
-Because srt only routes HTTP, HTTPS and SOCKS traffic, tools like `ssh` need help. The CLI routes `ssh`, `scp` and `sftp` through the sandbox's proxy. For database clients and other raw TCP tools, a built-in `frely tunnel` opens a local port inside the sandbox. If you reach the internet through a local proxy (Clash, for example), `frely sandbox proxy` lets the sandbox use it. Frely only reads your proxy settings; it does not change them.
+Because srt only routes HTTP, HTTPS and SOCKS traffic, tools like `ssh` need help. The CLI routes `ssh`, `scp` and `sftp` through the sandbox's proxy. For database clients and other raw TCP tools, a built-in `frely link tunnel` opens a local port inside the sandbox. If you reach the internet through a local proxy (Clash, for example), `frely link proxy` lets the sandbox use it. Frely only reads your proxy settings; it does not change them.
 
 ### What Frely CLI's use of srt does not cover
 
@@ -179,7 +179,7 @@ Source: https://cli.frely.cloud/docs/help/commands/
 
 # Which commands does the CLI have?
 
-Main ones: `frely link on|status|stop|off|auto-update`, `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely update`, `frely login`, `frely logout`, `frely uninstall`, `frely item install|update|publish|trust|call|status|remove`, `frely runs|result|cancel`, `frely service share|add|start|list|stop|remove`, `frely provider add|list|remove|key`, `frely task add|start|schedule` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
+Main ones: `frely link on|status|stop|off|auto-update`, `frely link workspace list|add|remove`, `frely link local list|add|remove`, `frely doctor`, `frely self update`, `frely login`, `frely logout`, `frely self uninstall`, `frely item install|update|publish|trust|call|status|remove`, `frely result|result list|result cancel`, `frely service share|list|stop|remove`, `frely agent list|status|run|setup|start|stop|logs|remove|key`, `frely provider add|list|remove|key`, `frely task local add|start|schedule` and `frely api list|describe|call`. Run any command group without a subcommand (for example `frely link`) to see what it offers; `frely help --agent --json` prints the full machine-readable contract.
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md)
 
@@ -357,7 +357,7 @@ Source: https://cli.frely.cloud/docs/help/uninstall/
 
 # How do I uninstall Frely CLI?
 
-Run `frely uninstall` in a local terminal (not through Device MCP). It lists everything first and removes it after you type yes (`--yes` for scripts). It revokes this computer's access on the Frely side, removes the service, saved login, device identity, settings, caches and the Agent Skills Frely installed, and last the `frely` program. It keeps the Frely App, your Providers and Agents in your account, the PATH lines the installer added, Skills you edited and marketplace items.
+Run `frely self uninstall` in a local terminal (not through Device MCP). It lists everything first and removes it after you type yes (`--yes` for scripts). It revokes this computer's access on the Frely side, removes the service, saved login, device identity, settings, caches and the Agent Skills Frely installed, and last the `frely` program. It keeps the Frely App, your Providers and Agents in your account, the PATH lines the installer added, Skills you edited and marketplace items.
 
 Related: [README](https://github.com/FrelyHQ/frely-cli/blob/main/README.md) · [Frely App (My Devices)](https://frely.cloud/app/)
 
@@ -367,7 +367,7 @@ Source: https://cli.frely.cloud/docs/help/update/
 
 # How do I update Frely CLI?
 
-Run `frely update`. It keeps your login, device, URL and workspace, never downgrades, pauses the background service, replaces the program after checking it and restarts the service. On Windows it prints a PowerShell command to run in a local terminal. Re-running https://frely.cloud/start.sh also updates and restarts the service.
+Run `frely self update`. It keeps your login, device, URL and workspace, never downgrades, pauses the background service, replaces the program after checking it and restarts the service. On Windows it prints a PowerShell command to run in a local terminal. Re-running https://frely.cloud/start.sh also updates and restarts the service.
 
 Related: [Self-update doc](https://github.com/FrelyHQ/frely-cli/blob/main/docs/self-update.md) · [start.sh](https://frely.cloud/start.sh)
 
@@ -651,7 +651,7 @@ Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/) · [How the sandbo
 ## How do I remove Frely from my computer?
 <!-- id: uninstall -->
 
-Run frely uninstall in a local terminal. It lists everything first, then removes it after you type yes. It revokes this computer's access, removes the service, saved login, device identity, settings and caches, and finally the frely program. It keeps your Providers and Agents in your account.
+Run frely self uninstall in a local terminal. It lists everything first, then removes it after you type yes. It revokes this computer's access, removes the service, saved login, device identity, settings and caches, and finally the frely program. It keeps your Providers and Agents in your account.
 
 ## Privacy and your data
 
@@ -1011,10 +1011,10 @@ frely login
 ## Install the Skill
 <!-- id: skill -->
 
-Install the `frely` Skill into your AI agent. Replace `<host>` with `claude-code`, `codex`, `pi`, `chatgpt` or `generic`. Restart the agent session afterwards so it finds the Skill.
+Install the `frely` Skill into your AI agent. Replace `<host>` with `claude-code`, `codex` or `pi`. Restart the agent session afterwards so it finds the Skill.
 
 ```sh
-frely skill install --host <host>
+frely agent setup <host>
 ```
 
 ## Ask your agent
@@ -1036,10 +1036,10 @@ frely link on
 
 | Command | What it does |
 | --- | --- |
-| `frely devices` | Lists your computers and whether they are online. |
-| `frely run <device> -- <command>` | Runs a command on a computer. |
-| `frely read <device>:<path>` | Reads a file or folder on a computer. |
-| `frely edit <device>:<path> --from <file>` | Writes a file on a computer. |
+| `frely device list` | Lists your computers and whether they are online. |
+| `frely device run <device> -- <command>` | Runs a command on a computer. |
+| `frely device read <device>:<path>` | Reads a file or folder on a computer. |
+| `frely device edit <device>:<path> --from <file>` | Writes a file on a computer. |
 | `frely item install <username/name> --host <host>` | Installs a Skill, Prompt or Agent from Frely. |
 | `frely api list` | Lists the account tools your agent can call. |
 | `frely doctor` | Checks sign-in, installation and connection. |
@@ -1047,7 +1047,7 @@ frely link on
 ## If something does not work
 <!-- id: help -->
 
-If the agent does not use Frely, restart the agent session and check that `frely skill install` finished. If `frely` is not found, open a new terminal and run it again. If a computer shows as offline, run `frely link on` on it. If a command asks for approval, open the link it prints and confirm on the Frely site. Other questions: support@frely.cloud.
+If the agent does not use Frely, restart the agent session and check that `frely agent setup` finished. If `frely` is not found, open a new terminal and run it again. If a computer shows as offline, run `frely link on` on it. If a command asks for approval, open the link it prints and confirm on the Frely site. Other questions: support@frely.cloud.
 
 ## FrelyMCP (alternative)
 

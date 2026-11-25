@@ -4,7 +4,7 @@ description: Una explicación sencilla del runtime de sandbox de código abierto
 date: 2026-10-28
 draft: false
 applies_to: any
-updated: 2026-10-28
+updated: 2026-11-25
 ---
 
 Permitir que una IA ejecute comandos de shell en tu computadora es útil. Puede instalar dependencias, ejecutar pruebas, leer registros y arreglar la compilación. También significa que un programa que no escribiste, guiado por texto que no revisaste, se ejecuta con tu cuenta de usuario.
@@ -77,7 +77,7 @@ Frely CLI permite esas escrituras para comandos ordinarios, y luego verifica. To
 
 ### Redes desde dentro del sandbox
 
-Como srt solo enruta tráfico HTTP, HTTPS y SOCKS, herramientas como `ssh` necesitan ayuda. La CLI enruta `ssh`, `scp` y `sftp` a través del proxy del sandbox. Para clientes de bases de datos y otras herramientas de TCP crudo, un `frely tunnel` integrado abre un puerto local dentro del sandbox. Si te conectas a internet a través de un proxy local (Clash, por ejemplo), `frely sandbox proxy` permite que el sandbox lo use. Frely solo lee tu configuración de proxy; no la cambia.
+Como srt solo enruta tráfico HTTP, HTTPS y SOCKS, herramientas como `ssh` necesitan ayuda. La CLI enruta `ssh`, `scp` y `sftp` a través del proxy del sandbox. Para clientes de bases de datos y otras herramientas de TCP crudo, un `frely link tunnel` integrado abre un puerto local dentro del sandbox. Si te conectas a internet a través de un proxy local (Clash, por ejemplo), `frely link proxy` permite que el sandbox lo use. Frely solo lee tu configuración de proxy; no la cambia.
 
 ### Lo que el uso de srt por Frely CLI no cubre
 

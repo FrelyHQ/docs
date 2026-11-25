@@ -2,7 +2,7 @@
 title: Dispositivos y la Frely CLI
 description: Instalar la CLI, vincular una computadora, mantenerla funcionando y eliminarla.
 applies_to: any
-updated: 2026-10-21
+updated: 2026-11-25
 order: 4
 ---
 
@@ -46,4 +46,4 @@ Related: [Guía de FrelyMCP](https://frely.cloud/docs/frelymcp/) · [How the san
 ## ¿Cómo elimino Frely de mi computadora?
 <!-- id: uninstall -->
 
-Ejecuta frely uninstall en una terminal local. Primero lista todo y luego lo elimina después de que escribes yes. Revoca el acceso de esta computadora, elimina el servicio, el inicio de sesión guardado, la identidad del dispositivo, la configuración y las cachés, y finalmente el programa frely. Conserva tus Proveedores y tus Agents en tu cuenta.
+Ejecuta frely self uninstall en una terminal local. Primero lista todo y luego lo elimina después de que escribes yes. Revoca el acceso de esta computadora, elimina el servicio, el inicio de sesión guardado, la identidad del dispositivo, la configuración y las cachés, y finalmente el programa frely. Conserva tus Proveedores y tus Agents en tu cuenta.

@@ -2,7 +2,7 @@
 title: 透過 Skill 與 CLI 使用 Frely
 description: 安裝 Frely CLI 及其 Skill，讓你的 AI 代理可以使用你的 Frely 帳戶，並從終端機控制你自己的電腦。
 applies_to: any
-updated: 2026-11-02
+updated: 2026-11-25
 order: 0
 ---
 
@@ -42,10 +42,10 @@ frely login
 ## 安裝 Skill
 <!-- id: skill -->
 
-將 `frely` Skill 安裝到你的 AI 代理。把 `<host>` 替換為 `claude-code`、`codex`、`pi`、`chatgpt` 或 `generic`。之後請重新啟動代理工作階段，讓它找到該 Skill。
+將 `frely` Skill 安裝到你的 AI 代理。把 `<host>` 替換為 `claude-code`、`codex` 或 `pi`。之後請重新啟動代理工作階段，讓它找到該 Skill。
 
 ```sh
-frely skill install --host <host>
+frely agent setup <host>
 ```
 
 ## 向你的代理提出要求
@@ -67,10 +67,10 @@ frely link on
 
 | 命令 | 作用 |
 | --- | --- |
-| `frely devices` | 列出你的電腦以及它們是否在線。 |
-| `frely run <device> -- <command>` | 在一部電腦上執行命令。 |
-| `frely read <device>:<path>` | 讀取一部電腦上的檔案或資料夾。 |
-| `frely edit <device>:<path> --from <file>` | 在一部電腦上寫入檔案。 |
+| `frely device list` | 列出你的電腦以及它們是否在線。 |
+| `frely device run <device> -- <command>` | 在一部電腦上執行命令。 |
+| `frely device read <device>:<path>` | 讀取一部電腦上的檔案或資料夾。 |
+| `frely device edit <device>:<path> --from <file>` | 在一部電腦上寫入檔案。 |
 | `frely item install <username/name> --host <host>` | 從 Frely 安裝 Skill、Prompt 或 Agent。 |
 | `frely api list` | 列出你的代理可以呼叫的帳戶工具。 |
 | `frely doctor` | 檢查登入、安裝和連線。 |
@@ -78,4 +78,4 @@ frely link on
 ## 如果無法正常運作
 <!-- id: help -->
 
-如果代理沒有使用 Frely，請重新啟動代理工作階段，並確認 `frely skill install` 已完成。如果找不到 `frely`，請開啟新的終端機再執行一次。如果一部電腦顯示為離線，請在該電腦上執行 `frely link on`。如果命令要求批准，請開啟它顯示的連結，並在 Frely 網站上確認。其他問題：support@frely.cloud。
+如果代理沒有使用 Frely，請重新啟動代理工作階段，並確認 `frely agent setup` 已完成。如果找不到 `frely`，請開啟新的終端機再執行一次。如果一部電腦顯示為離線，請在該電腦上執行 `frely link on`。如果命令要求批准，請開啟它顯示的連結，並在 Frely 網站上確認。其他問題：support@frely.cloud。

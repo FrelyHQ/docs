@@ -2,7 +2,7 @@
 title: Devices and the Frely CLI
 description: Answers about devices and the Frely CLI: installing the CLI, linking a computer to your account, keeping it working, and removing it.
 applies_to: any
-updated: 2026-11-02
+updated: 2026-11-25
 order: 4
 ---
 
@@ -46,4 +46,4 @@ Related: [FrelyMCP guide](https://frely.cloud/docs/frelymcp/) · [How the sandbo
 ## How do I remove Frely from my computer?
 <!-- id: uninstall -->
 
-Run frely uninstall in a local terminal. It lists everything first, then removes it after you type yes. It revokes this computer's access, removes the service, saved login, device identity, settings and caches, and finally the frely program. It keeps your Providers and Agents in your account.
+Run frely self uninstall in a local terminal. It lists everything first, then removes it after you type yes. It revokes this computer's access, removes the service, saved login, device identity, settings and caches, and finally the frely program. It keeps your Providers and Agents in your account.

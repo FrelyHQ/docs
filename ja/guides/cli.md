@@ -2,7 +2,7 @@
 title: Skill と CLI で Frely を使う
 description: Frely CLI とその Skill をインストールして、AI エージェントがあなたの Frely アカウントを使い、ターミナルから自分のコンピューターを操作できるようにします。
 applies_to: any
-updated: 2026-11-02
+updated: 2026-11-25
 order: 0
 ---
 
@@ -42,10 +42,10 @@ frely login
 ## Skill をインストールする
 <!-- id: skill -->
 
-`frely` の Skill を AI エージェントにインストールします。`<host>` は `claude-code`、`codex`、`pi`、`chatgpt`、`generic` のいずれかに置き換えてください。その後、Skill が認識されるように、エージェントのセッションを再起動してください。
+`frely` の Skill を AI エージェントにインストールします。`<host>` は `claude-code`、`codex`、`pi` のいずれかに置き換えてください。その後、Skill が認識されるように、エージェントのセッションを再起動してください。
 
 ```sh
-frely skill install --host <host>
+frely agent setup <host>
 ```
 
 ## エージェントに依頼する
@@ -67,10 +67,10 @@ frely link on
 
 | コマンド | 説明 |
 | --- | --- |
-| `frely devices` | 自分のコンピューターと、オンラインかどうかを一覧表示します。 |
-| `frely run <device> -- <command>` | コンピューター上でコマンドを実行します。 |
-| `frely read <device>:<path>` | コンピューター上のファイルやフォルダーを読み取ります。 |
-| `frely edit <device>:<path> --from <file>` | コンピューター上のファイルに書き込みます。 |
+| `frely device list` | 自分のコンピューターと、オンラインかどうかを一覧表示します。 |
+| `frely device run <device> -- <command>` | コンピューター上でコマンドを実行します。 |
+| `frely device read <device>:<path>` | コンピューター上のファイルやフォルダーを読み取ります。 |
+| `frely device edit <device>:<path> --from <file>` | コンピューター上のファイルに書き込みます。 |
 | `frely item install <username/name> --host <host>` | Frely から Skill、Prompt、Agent をインストールします。 |
 | `frely api list` | エージェントが呼び出せるアカウントツールを一覧表示します。 |
 | `frely doctor` | サインイン、インストール、接続を確認します。 |
@@ -78,4 +78,4 @@ frely link on
 ## うまく動かないとき
 <!-- id: help -->
 
-エージェントが Frely を使わない場合は、エージェントのセッションを再起動し、`frely skill install` が完了しているか確認してください。`frely` が見つからない場合は、新しいターミナルを開いてもう一度実行してください。コンピューターがオフラインと表示される場合は、そのコンピューターで `frely link on` を実行してください。コマンドが承認を求めてきた場合は、表示されたリンクを開いて Frely サイト上で確認してください。その他のご質問は support@frely.cloud まで。
+エージェントが Frely を使わない場合は、エージェントのセッションを再起動し、`frely agent setup` が完了しているか確認してください。`frely` が見つからない場合は、新しいターミナルを開いてもう一度実行してください。コンピューターがオフラインと表示される場合は、そのコンピューターで `frely link on` を実行してください。コマンドが承認を求めてきた場合は、表示されたリンクを開いて Frely サイト上で確認してください。その他のご質問は support@frely.cloud まで。

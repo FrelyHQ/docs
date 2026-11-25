@@ -4,7 +4,7 @@ description: A plain explanation of Anthropic's open-source sandbox runtime (srt
 date: 2026-10-28
 draft: false
 applies_to: any
-updated: 2026-10-28
+updated: 2026-11-25
 ---
 
 Letting an AI run shell commands on your computer is useful. It can install dependencies, run tests, read logs, and fix the build. It also means a program you did not write, driven by text you did not review, runs with your user account.
@@ -77,7 +77,7 @@ Frely CLI allows those writes for ordinary commands, then checks. It takes a cop
 
 ### Networking from inside the sandbox
 
-Because srt only routes HTTP, HTTPS and SOCKS traffic, tools like `ssh` need help. The CLI routes `ssh`, `scp` and `sftp` through the sandbox's proxy. For database clients and other raw TCP tools, a built-in `frely tunnel` opens a local port inside the sandbox. If you reach the internet through a local proxy (Clash, for example), `frely sandbox proxy` lets the sandbox use it. Frely only reads your proxy settings; it does not change them.
+Because srt only routes HTTP, HTTPS and SOCKS traffic, tools like `ssh` need help. The CLI routes `ssh`, `scp` and `sftp` through the sandbox's proxy. For database clients and other raw TCP tools, a built-in `frely link tunnel` opens a local port inside the sandbox. If you reach the internet through a local proxy (Clash, for example), `frely link proxy` lets the sandbox use it. Frely only reads your proxy settings; it does not change them.
 
 ### What Frely CLI's use of srt does not cover
 

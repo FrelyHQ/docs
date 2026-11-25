@@ -2,7 +2,7 @@
 title: Usar Frely con Skill y CLI
 description: Instala el Frely CLI y su Skill para que tu agente de IA pueda usar tu cuenta de Frely y controlar tus propias computadoras desde una terminal.
 applies_to: any
-updated: 2026-11-02
+updated: 2026-11-25
 order: 0
 ---
 
@@ -42,10 +42,10 @@ frely login
 ## Instalar la Skill
 <!-- id: skill -->
 
-Instala la Skill de `frely` en tu agente de IA. Reemplaza `<host>` por `claude-code`, `codex`, `pi`, `chatgpt` o `generic`. Luego reinicia la sesión del agente para que encuentre la Skill.
+Instala la Skill de `frely` en tu agente de IA. Reemplaza `<host>` por `claude-code`, `codex` o `pi`. Luego reinicia la sesión del agente para que encuentre la Skill.
 
 ```sh
-frely skill install --host <host>
+frely agent setup <host>
 ```
 
 ## Pedirle cosas a tu agente
@@ -67,10 +67,10 @@ frely link on
 
 | Comando | Qué hace |
 | --- | --- |
-| `frely devices` | Muestra tus computadoras y si están en línea. |
-| `frely run <device> -- <command>` | Ejecuta un comando en una computadora. |
-| `frely read <device>:<path>` | Lee un archivo o una carpeta en una computadora. |
-| `frely edit <device>:<path> --from <file>` | Escribe un archivo en una computadora. |
+| `frely device list` | Muestra tus computadoras y si están en línea. |
+| `frely device run <device> -- <command>` | Ejecuta un comando en una computadora. |
+| `frely device read <device>:<path>` | Lee un archivo o una carpeta en una computadora. |
+| `frely device edit <device>:<path> --from <file>` | Escribe un archivo en una computadora. |
 | `frely item install <username/name> --host <host>` | Instala una Skill, un prompt o un Agent desde Frely. |
 | `frely api list` | Muestra las herramientas de la cuenta que tu agente puede llamar. |
 | `frely doctor` | Verifica el inicio de sesión, la instalación y la conexión. |
@@ -78,4 +78,4 @@ frely link on
 ## Si algo no funciona
 <!-- id: help -->
 
-Si el agente no usa Frely, reinicia la sesión del agente y verifica que `frely skill install` haya terminado. Si no se encuentra `frely`, abre una terminal nueva y ejecútalo de nuevo. Si una computadora aparece como desconectada, ejecuta `frely link on` en ella. Si un comando pide aprobación, abre el enlace que muestra y confirma en el sitio de Frely. Otras preguntas: support@frely.cloud.
+Si el agente no usa Frely, reinicia la sesión del agente y verifica que `frely agent setup` haya terminado. Si no se encuentra `frely`, abre una terminal nueva y ejecútalo de nuevo. Si una computadora aparece como desconectada, ejecuta `frely link on` en ella. Si un comando pide aprobación, abre el enlace que muestra y confirma en el sitio de Frely. Otras preguntas: support@frely.cloud.
